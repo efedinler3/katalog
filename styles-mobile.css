@@ -1,0 +1,224 @@
+/* Novibrasyon mobil katalog — 108 x 192 mm (9:16) telefon sayfalari, tek sutun.
+   styles.css'teki bilesenleri kullanir, yerlesimi burada yeniden kurar. */
+body.m { background: var(--paper); font-size: 12pt; }
+body.m a { color: inherit; text-decoration: none; }
+
+/* ---------- sayfa (bolum) ---------- */
+.ms {
+  width: 108mm; padding: 11mm 7mm 11mm; background: var(--paper);
+  break-before: page; page-break-before: always;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  position: relative;
+}
+.ms:first-child { break-before: auto; }
+.ms.full { height: 192mm; overflow: hidden; }
+.ms.dark { background: var(--teal); color: #fff; }
+.keep { break-inside: avoid; page-break-inside: avoid; }
+.m .blk, .m .group, .m .vcard, .m .kcard, .m .mfr, .m .pnrow, .m .irow, .m .tiles > div,
+.m .parts li, .m .feat li, .m .mcard, .m .fin { break-inside: avoid; page-break-inside: avoid; }
+@media screen {
+  body.m { background: #7d878b; padding: 6mm 0; }
+  .ms { margin: 0 auto 6mm; box-shadow: 0 1.5mm 6mm rgba(0, 0, 0, .28); min-height: 192mm; }
+}
+
+/* ---------- tipografi ---------- */
+.m .eyebrow { font-size: 9.5pt; letter-spacing: .14em; }
+.m .h1 { font-size: 25pt; line-height: 1.06; margin-top: 2mm; }
+.m .lead { font-size: 12.5pt; line-height: 1.45; margin-top: 3mm; }
+.m .h2m { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 21pt; font-weight: 720; letter-spacing: -.028em; line-height: 1.1; margin-top: 2mm; }
+.m .mdims .h2m { margin-top: 9mm; }
+.m .sect { margin-top: 7mm; }
+.m .blk { margin-top: 6mm; }
+.m .keep > .blk { margin-top: 6mm; }
+.m .cap-in { font-size: 11pt; }
+
+/* ---------- kapak / arka kapak ---------- */
+.mcover { padding: 0; }
+.mc-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.mc-logo { position: absolute; left: 7mm; top: 12mm; width: 50mm; }
+.mc-kicker { position: absolute; right: 7mm; top: 13mm; font-size: 8pt; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; color: rgba(255, 255, 255, .8); text-align: right; line-height: 1.5; }
+.mc-title { position: absolute; left: 7mm; right: 7mm; top: 32mm; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 34pt; font-weight: 760; letter-spacing: -.042em; line-height: .98; color: #fff; }
+.mc-sub { position: absolute; left: 7mm; right: 7mm; top: 60mm; font-size: 12.5pt; font-weight: 500; color: rgba(255, 255, 255, .88); line-height: 1.3; }
+.m .cover-engine { position: absolute; }
+.mc-wave { position: absolute; left: 0; top: calc(192mm * .6 - 15mm); width: 108mm; height: 30mm; overflow: visible; }
+.mc-brands, .mc-foot { text-shadow: 0 0 2mm rgba(0, 0, 0, .6); }
+.mc-brands { position: absolute; left: 7mm; right: 7mm; bottom: 20mm; font-size: 10pt; color: rgba(255, 255, 255, .85); line-height: 1.4; }
+.mc-foot { position: absolute; left: 7mm; right: 7mm; bottom: 9mm; border-top: .3mm solid rgba(255, 255, 255, .45); padding-top: 2.6mm; display: flex; justify-content: space-between; font-size: 10pt; font-weight: 650; color: #fff; }
+.mback { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 34, 40, .86), rgba(10, 34, 40, .72) 45%, rgba(8, 26, 31, .9)); padding: 16mm 7mm 8mm; display: flex; flex-direction: column; }
+.mb-logo { width: 62mm; margin: 0 auto; }
+.mb-tag { text-align: center; font-size: 13pt; font-weight: 550; margin-top: 5mm; color: rgba(255, 255, 255, .9); }
+.mb-qr { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; margin-top: 9mm; }
+.mb-qr > div { display: flex; flex-direction: column; align-items: center; gap: 2mm; text-align: center; }
+.mb-qr .qr { width: 30mm; height: 30mm; background: #fff; color: #0e1a1d; border-radius: 2mm; padding: 1.2mm; }
+.mb-qr b { font-size: 10.5pt; font-weight: 700; }
+.mb-ct { margin-top: 8mm; }
+.mb-ct > * { display: flex; align-items: center; gap: 3.4mm; padding: 2.3mm 0; border-bottom: .3mm solid rgba(255, 255, 255, .2); font-size: 12pt; font-weight: 600; }
+.mb-ct > *:first-child { border-top: .3mm solid rgba(255, 255, 255, .2); }
+.mb-ct svg { width: 5.5mm; height: 5.5mm; color: var(--aqua); flex: none; }
+.mb-ct small { display: block; font-size: 9.5pt; font-weight: 500; color: rgba(255, 255, 255, .7); }
+.mb-foot { margin-top: auto; font-size: 8.5pt; color: rgba(255, 255, 255, .62); text-align: center; line-height: 1.45; }
+
+/* ---------- karsilama ---------- */
+.m-photo { margin: -11mm -7mm 7mm; height: 62mm; overflow: hidden; }
+.m-photo img, .m-photo2 img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.m-photo2 { height: 60mm; border-radius: 4mm; overflow: hidden; margin-top: 7mm; }
+.mvalues { margin-top: 6mm; display: grid; gap: 3.4mm; }
+.mvalues > div { display: grid; grid-template-columns: 8mm 1fr; column-gap: 3mm; border-top: .3mm solid var(--line); padding-top: 3mm; }
+.mvalues svg { width: 6.5mm; height: 6.5mm; color: var(--aquaink); stroke-width: 1.6; grid-row: span 2; }
+.mvalues b { font-size: 13pt; font-weight: 720; }
+.mvalues span { font-size: 11pt; color: var(--ink2); line-height: 1.4; margin-top: .6mm; }
+.mindex { display: grid; }
+.m .irow { display: flex; align-items: center; gap: 2.6mm; padding: 2.6mm 0; border-top: .25mm solid var(--line); }
+.m .mindex .irow:last-child { border-bottom: .25mm solid var(--line); }
+.m .irow b { font-size: 12.5pt; white-space: normal; }
+.m .irow span { font-size: 10.5pt; white-space: normal; }
+.m .irow em svg, .m .mbidx em svg, .mdiv-list em svg { width: 5mm; height: 5mm; color: var(--aquaink); display: block; }
+
+/* ---------- teknik giris ---------- */
+.anat-card.m { height: auto; margin-top: 6mm; padding: 3mm 2mm; }
+.anat-card.m svg { width: 100%; height: auto; }
+.m .parts li { padding: 2mm 0; }
+.mchart { background: var(--paper); border: .3mm solid var(--line); border-radius: 4mm; padding: 2mm; margin-top: 1mm; }
+.kcards.m { grid-template-columns: 1fr; }
+.m .shs { column-gap: 3.4mm; }
+.m .sh em { font-size: 20pt; }
+.m .sh small { font-size: 9.5pt; }
+.m .sh b { font-size: 12pt; }
+.m .sh span { font-size: 10.5pt; }
+.feat.m { grid-template-columns: 1fr; }
+
+/* ---------- motor bulucu ---------- */
+.msteps { display: grid; gap: 3.6mm; margin-top: 6mm; }
+.msteps > div { display: grid; grid-template-columns: 10mm 1fr; column-gap: 3mm; border-top: .35mm solid var(--ink); padding-top: 2.6mm; }
+.msteps em { font-style: normal; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 24pt; font-weight: 760; color: var(--aquaink); line-height: 1; }
+.msteps b { display: block; font-size: 13pt; font-weight: 720; }
+.msteps span { display: block; font-size: 11pt; color: var(--ink2); line-height: 1.4; margin-top: .8mm; }
+.fx-dia.m { display: block; margin-top: 7mm; padding: 4mm 4mm 4mm; }
+.fx-dia.m h3 { margin-bottom: 6mm; }
+.fx-dia.m .cap-in { margin-top: 5mm; }
+.fx-dia.m .ptlegend { margin-top: 3mm; }
+.m .keychip { margin-top: 1mm; }
+.m .keychip .mc { max-width: none; }
+.mbidx { display: grid; }
+.mbidx a { display: flex; align-items: center; justify-content: space-between; padding: 2.6mm 0; border-top: .25mm solid var(--line); font-size: 12.5pt; }
+.mbidx a:last-child { border-bottom: .25mm solid var(--line); }
+.mfinder { margin-top: 3mm; }
+.m .bband { margin-top: 5mm; break-after: avoid; page-break-after: avoid; }
+.mfr { padding: 2.4mm 2.4mm 2.6mm; border-radius: 2.5mm; margin-top: 1.2mm; }
+.mfr.alt { background: var(--panel); }
+.mfr .en b { display: block; font-size: 13pt; font-weight: 720; line-height: 1.22; }
+.mfr .en > span { display: block; font-size: 10.5pt; color: var(--ink2); line-height: 1.4; margin-top: .6mm; }
+.m .mcs { margin-top: 2mm; grid-template-columns: 1fr; gap: 1.6mm; }
+.m .mc { min-height: 12.6mm; }
+.m .mc .mi { display: flex; flex-wrap: wrap; align-items: center; column-gap: 2.4mm; row-gap: .6mm; }
+.m .mc .mi b { display: inline; }
+.m .mc .mi .pt { margin-top: 0; font-size: 10pt; }
+.m .mc .mi .pn2 { display: inline; margin-top: 0; font-size: 10pt; }
+.m a.mc { color: var(--ink); }
+.m .mc .pg.go { border-left: .25mm solid var(--line); padding-left: 2mm; min-width: 0; }
+.m .mc .pg.go svg { width: 5mm; height: 5mm; color: var(--aquaink); display: block; }
+.m .mc .mi b { font-size: 15pt; }
+
+/* ---------- parca numarasi ---------- */
+.mpn { margin-top: 5mm; }
+.mpn .brandhead { margin-top: 5mm; }
+.m .pnrow { flex-wrap: wrap; row-gap: 1.2mm; }
+.m .pnrow .pn { font-size: 14pt; }
+.m a.mp em svg { width: 3.6mm; height: 3.6mm; display: block; }
+
+/* ---------- bolum ayraci ---------- */
+.m .mdiv-img { margin: -11mm -7mm 0; height: 78mm; overflow: hidden; }
+.m .mdiv-img img { width: 100%; height: 100%; object-fit: cover; }
+.m .mdiv-img.product { background: var(--panel); padding: 6mm 10mm 4mm; margin-top: -11mm; }
+.m .mdiv-img.product img { object-fit: contain; }
+.mdiv-text { margin-top: 7mm; }
+.m .div-num { font-size: 11pt; }
+.m .div-title { font-size: 28pt; margin-top: 2mm; }
+.m .div-intro { font-size: 12pt; margin-top: 3.4mm; }
+.mdiv-list { margin-top: 5mm; border-top: .3mm solid rgba(255, 255, 255, .3); }
+.mdiv-list a { display: grid; grid-template-columns: 1fr auto; column-gap: 3mm; align-items: center; padding: 2mm 0; border-bottom: .3mm solid rgba(255, 255, 255, .18); }
+.mdiv-list b { font-size: 12pt; font-weight: 700; }
+.mdiv-list span { grid-column: 1; font-size: 10pt; color: rgba(255, 255, 255, .75); }
+.mdiv-list em { grid-row: 1 / span 2; grid-column: 2; }
+.mdiv-list em svg { color: var(--aqua) !important; }
+
+/* ---------- urun vitrini ---------- */
+.mhero { display: flex; flex-direction: column; }
+.m .brandline { font-size: 15pt; margin-top: 4mm; }
+.m .code { font-size: 92pt; margin: 2mm 0 0 -1.4mm; line-height: .82; }
+.m .code.mid { font-size: 78pt; }
+.m .code.long { font-size: 62pt; line-height: .9; }
+.m .tagline { font-size: 14pt; margin-top: 4mm; }
+.mstage { flex: 1; min-height: 0; margin-top: 6mm; background: var(--panel); border-radius: 5mm; display: flex; gap: 1.5mm; padding: 4mm 3mm 3mm; }
+.mstage figure { flex: 1; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; }
+.mstage figure img { flex: 1; min-height: 0; width: 100%; object-fit: contain; }
+.mstage figcaption { display: flex; align-items: center; gap: 1.8mm; padding-top: 2mm; font-size: 9.5pt; font-weight: 650; text-align: center; }
+.mstage .swatch { width: 3.4mm; height: 3.4mm; flex: none; }
+.mstage.n3 figcaption { font-size: 12pt; font-weight: 750; }
+.mglance { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 3.4mm; margin-top: 5mm; }
+.mglance div { border-top: .35mm solid var(--ink); padding-top: 2.2mm; min-width: 0; }
+.mglance b { display: block; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 14pt; font-weight: 720; letter-spacing: -.02em; line-height: 1.1; }
+.mglance span { display: block; font-size: 9.5pt; color: var(--ink2); margin-top: 1mm; line-height: 1.3; }
+
+/* ---------- urun ayrintilari ---------- */
+.m .group { grid-template-columns: 1fr; row-gap: 1.8mm; }
+.m .gl small { white-space: normal; }
+.m .chip { font-size: 12pt; }
+.m .tiles { grid-template-columns: 1fr 1fr; gap: 2.6mm; }
+.m .tiles.wide { grid-template-columns: 1fr; }
+.m .tiles b { font-size: 15pt; }
+.m .vtiles { grid-template-columns: repeat(3, 1fr); }
+.m .vtiles b { font-size: 16pt; }
+.m .finishes { grid-template-columns: 1fr; gap: 2.6mm; }
+.m .feat { grid-template-columns: 1fr; gap: 2.2mm; }
+.m .refgrid { gap: 3mm 7mm; }
+.m .pn { font-size: 13.5pt; }
+.vcard { background: var(--panel); border-radius: 3.5mm; padding: 3mm 3.6mm; margin-top: 2.4mm; }
+.vcard .vh { display: flex; align-items: baseline; justify-content: space-between; gap: 3mm; }
+.vcard .vh b { font-size: 14pt; font-weight: 750; }
+.vcard .vh em { font-style: normal; font-size: 14pt; font-weight: 720; color: var(--aquaink); white-space: nowrap; }
+.vcard .vh span { font-size: 10.5pt; color: var(--ink2); }
+.vcard p { font-size: 10.5pt; color: var(--ink2); line-height: 1.4; margin-top: 1.4mm; }
+.vgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; margin-top: 2mm; }
+.vgrid small { display: block; font-size: 9pt; font-weight: 650; color: var(--ink3); letter-spacing: .04em; }
+.vgrid strong { display: block; font-size: 14pt; font-weight: 720; }
+.vcard dl { display: grid; grid-template-columns: auto 1fr; gap: 1mm 3mm; margin: 1.6mm 0 0; font-size: 11pt; }
+.vcard dt { color: var(--ink3); }
+.vcard dd { margin: 0; font-weight: 650; }
+.mcard { background: var(--paper); border: .3mm solid var(--line); border-radius: 4mm; padding: 3mm; margin-top: 4mm; position: relative; break-inside: avoid; }
+.mcard img { width: 100%; height: auto; max-height: 150mm; object-fit: contain; }
+.mcard .lbl { font-size: 11pt; font-weight: 750; display: block; margin-bottom: 1mm; }
+.mtri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; }
+.mtri .mcard { padding: 2mm; }
+.m .mchart { margin-top: 4mm; }
+.mphotos { display: grid; grid-template-columns: 1fr; gap: 3mm; }
+.mphotos img { width: 100%; border-radius: 4mm; }
+.mnote { margin-top: 8mm; font-size: 11pt; color: var(--ink2); line-height: 1.45; }
+.mcontact { margin-top: 3mm; background: var(--teal); color: #fff; border-radius: 4mm; padding: 4mm 4.4mm; display: grid; gap: 2mm; }
+.mcontact b { font-size: 14pt; font-weight: 720; }
+.mcontact div { display: flex; align-items: center; gap: 2.4mm; font-size: 11.5pt; font-weight: 650; }
+.mcontact div.soft { font-weight: 500; font-size: 10pt; color: rgba(255, 255, 255, .82); }
+.mcontact svg { width: 4.8mm; height: 4.8mm; flex: none; color: var(--aqua); }
+
+/* ---------- yataklar / siparis ---------- */
+.mbcard { margin-top: 6mm; }
+.mbcard .im { background: var(--panel); border-radius: 4mm; height: 52mm; padding: 4mm; }
+.mbcard .im img { width: 100%; height: 100%; object-fit: contain; }
+.mbcard h2 { font-size: 16pt; font-weight: 720; margin: 3.4mm 0 2.4mm; }
+.msteps.big b { font-size: 14pt; }
+.mstrip { margin-top: 7mm; background: var(--teal); color: #fff; border-radius: 4mm; padding: 4mm 5mm; }
+.mstrip small { display: block; font-size: 9pt; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; color: var(--aqua); }
+.mstrip b { display: block; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 20pt; font-weight: 750; margin-top: 1mm; }
+
+/* bolunmemesi gereken bloklar */
+.mvalues > div, .m ol.parts, .fx-dia.m, .mindex, .mbidx, .msteps > div, .mstage, .mglance { break-inside: avoid; page-break-inside: avoid; }
+.m .sect { break-after: avoid; page-break-after: avoid; }
+
+/* olculer her urunde yeni sayfada baslasin (baslik sayfa dibinde yalniz kalmasin) */
+.m .mdims { break-before: page; page-break-before: always; }
+.m .mdims .h2m { margin-top: 0; }
+.m .h2m { break-after: avoid; page-break-after: avoid; }
+
+/* v6: urun rengi (build.py shade_vars) */
+.mglance div { border-top: .9mm solid var(--sh, var(--ink)); }
+.mglance div:first-child b { color: var(--shd, var(--ink)); }

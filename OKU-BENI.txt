@@ -1,0 +1,91 @@
+NOVIBRASYON KATALOG 2026 — NASIL KULLANILIR
+============================================
+
+IKI AYRI KATALOG: TURKCE VE INGILIZCE
+  Ayni tasarim ve ayni urun bilgileriyle iki ayri katalog uretilir.
+
+  TURKCE
+    Novibrasyon-Katalog-2026-TR.pdf
+        A4 (210 x 297 mm). Ekranda gostermek, ofis yazicisinda basmak icin.
+    Novibrasyon-Katalog-2026-TR-BASKI-3mm-tasma.pdf
+        Matbaa icin. Sayfa 216 x 303 mm = A4 + her kenarda 3 mm tasma payi.
+        Matbaaya bunu verin: "A4, 3 mm tasma payli, 52 sayfa" deyin.
+        52 sayfa oldugu icin tel dikis yerine Amerikan cilt (sirt tutkal) onerilir.
+    Novibrasyon-Katalog-2026-TR-eposta.pdf
+        Kucuk dosya (gorseller kucultulmus). E-posta / WhatsApp ile gondermek icin.
+
+  INGILIZCE
+    Novibrasyon-Catalogue-2026-EN.pdf                  (ekran / ofis yazicisi)
+    Novibrasyon-Catalogue-2026-EN-PRINT-3mm-bleed.pdf  (matbaa)
+    Novibrasyon-Catalogue-2026-EN-email.pdf            (e-posta)
+
+  MOBIL (telefon icin, WhatsApp ile gondermeye uygun, ~6 MB)
+    Novibrasyon-Katalog-2026-TR-mobil.pdf
+    Novibrasyon-Catalogue-2026-EN-mobile.pdf
+        Telefon ekrani boyutunda (9:16) sayfalar, tek sutun, buyuk yazi.
+        Icindekiler, motor rehberi ve parca numarasi listesindeki kutulara
+        dokununca ilgili urune gidilir. Ayni icerik, sayfa numarasi yerine baglanti.
+        Yalnizca mobil surumu yenilemek icin:  python build.py --lang tr --mobile
+        (mobil yerlesim: mobile.py, stil: styles-mobile.css)
+
+SAYFA DUZENI
+  Her urun iki sayfalik bir acilimdir: sol sayfada urun, one cikan degerler
+  (takoz basina yuk, saplama, taban), uyumlu motorlar ve parca numaralari;
+  sag sayfada olcu cizimi + olcu tablosu, egriler, 3 fotograf kutusu.
+  Bolumler: 01 Yanmar (50-500), 02 Saildrive, 03 Cummins (450, 600),
+  04 Universal (VV1, VV2, VV3, MT).
+  Renkler: Yanmar turkuaz, Saildrive mavi, Cummins bronz, Universal gri-mavi.
+  Seri icinde kucukten buyuge acik -> koyu (50 en acik turkuaz, 500 en koyu).
+  Renk uclari build.py icinde PALETTE satirindadir.
+  Dis kenardaki sekme "YANMAR 01, YANMAR 02 ..." diye urun sirasini gosterir
+  ve her urunde biraz asagi kayar (kapali katalogun kenarinda merdiven olur).
+  Urun sol sayfasinin altindaki bos alanda cok silik bir manzara vardir:
+  dag, sakin deniz ve tekne (assets\art\sea-scene.svg); yer azsa kendiliginden
+  gizlenir. Siliklik styles.css icinde .sea satirindaki opacity degeridir.
+
+TAM SAYFA FOTOGRAFLAR
+  Bolumlerin arasinda tam sayfa fotograf sayfalari birakildi
+  (su an koyu zeminli "Tam sayfa fotograf" yer tutucusu gorunur).
+  Fotograf koymak icin:  fotograflar\tam-sayfa\1.jpg, 2.jpg, 3.jpg ...
+  Hangi numaranin hangi sayfaya dustugu yer tutucunun ustunde yazar.
+  Fotograf sayfanin tamamina (3 mm tasma dahil) yayilir; en az 2500 piksel
+  yukseklik onerilir.
+
+FOTOGRAF SLOTLARI (her urun icin 3 adet)
+  "fotograflar" klasorunde her urunun kendi klasoru var:
+      fotograflar\50\   fotograflar\70\   fotograflar\75\   fotograflar\100\
+      fotograflar\150\  fotograflar\200\  fotograflar\sd150\ fotograflar\sd230\
+      fotograflar\sd430\ fotograflar\400\ fotograflar\450\  fotograflar\500\
+      fotograflar\600\  fotograflar\vv1\  fotograflar\vv2\  fotograflar\vv3\
+      fotograflar\mt\
+  Her klasore 1.jpg, 2.jpg, 3.jpg adinda fotograf koyun
+  (.jpeg / .png / .webp da olur).
+      Uc kutu, urunun sag sayfasinin altinda yan yana durur.
+  Fotograflar kutuya gore otomatik kirpilir; baski icin en az 2000 piksel
+  genislik onerilir. Ayni fotograflar iki katalogda da kullanilir.
+
+KATALOGU YENIDEN OLUSTURMAK
+  KATALOGU-OLUSTUR.bat dosyasina cift tiklayin. Turkce ve Ingilizce PDF'lerin
+  hepsi yenilenir (yaklasik 15 dakika surer).
+  Yalnizca Turkce icin komut satirinda:  python build.py --lang tr
+
+METINLERI DEGISTIRMEK
+  Urun bilgileri, parca numaralari ve motor listeleri data.py dosyasindadir
+  (Ingilizce asil metin).
+  Turkce metinler ceviri-tr.json dosyasindadir: her satir
+      "Ingilizce metin": "Turkce metin"
+  seklindedir. Turkce bir metni duzeltmek icin sagdaki kismi degistirin.
+  data.py'de bir Ingilizce metni degistirirseniz Turkce karsiligini da
+  ceviri-tr.json'a ekleyin; eksik kalanlar derlemede ceviri-eksik.txt
+  dosyasina yazilir ve katalogda Ingilizce gorunur.
+  Renkler / yazi boyutlari styles.css, sayfa duzeni build.py icindedir.
+
+TEKNIK CIZIMLER
+  assets\art\ klasorunde: kapaktaki motor cizimi (engine-side.svg),
+  takoz konumlari semasi (engine-top.svg) ve takoz kesit cizimi
+  (mount-anatomy.svg). Urun olcu cizimleri assets\img\d*.jpg dosyalaridir;
+  olcu tablolarindaki degerler data.py icindeki "dimrows" alanindadir.
+
+DIGER BETIKLER
+  prepare_assets.py  urun gorsellerini indirir / kirpar (bir kez calistirildi)
+  make_cover.py      kapaktaki deniz gorselini uretir

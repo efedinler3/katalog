@@ -1,0 +1,7 @@
+# Yedek, aday ve gecici klasorler / dosyalar
+_*/
+_*
+__pycache__/
+*.pyc
+assets/src/
+assets/img/_orig/

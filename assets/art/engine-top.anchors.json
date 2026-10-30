@@ -1,0 +1,172 @@
+{
+  "bed_right_line_y": [
+    186.0,
+    188.0
+  ],
+  "bed_left_line_y": [
+    186.0,
+    712.0
+  ],
+  "beds_bbox": [
+    186.0,
+    152.0,
+    1034.0,
+    748.0
+  ],
+  "m-front-right": [
+    330.0,
+    188.0
+  ],
+  "label-m-front-right": [
+    330.0,
+    106.0
+  ],
+  "m-front-right-flange-edge": [
+    330.0,
+    161.0
+  ],
+  "m-front-left": [
+    330.0,
+    712.0
+  ],
+  "label-m-front-left": [
+    330.0,
+    794.0
+  ],
+  "m-front-left-flange-edge": [
+    330.0,
+    739.0
+  ],
+  "m-rear-right": [
+    836.0,
+    188.0
+  ],
+  "label-m-rear-right": [
+    836.0,
+    106.0
+  ],
+  "m-rear-right-flange-edge": [
+    836.0,
+    161.0
+  ],
+  "m-rear-left": [
+    836.0,
+    712.0
+  ],
+  "label-m-rear-left": [
+    836.0,
+    794.0
+  ],
+  "m-rear-left-flange-edge": [
+    836.0,
+    739.0
+  ],
+  "crank_pulley": [
+    167.0,
+    450.0
+  ],
+  "belt": [
+    157.0,
+    375.0
+  ],
+  "cylinder_1": [
+    350.0,
+    450.0
+  ],
+  "cylinder_2": [
+    450.0,
+    450.0
+  ],
+  "cylinder_3": [
+    550.0,
+    450.0
+  ],
+  "cylinder_4": [
+    650.0,
+    450.0
+  ],
+  "oil_filler": [
+    700.0,
+    424.0
+  ],
+  "heat_exchanger": [
+    537.0,
+    280.0
+  ],
+  "exhaust_elbow": [
+    768.0,
+    284.0
+  ],
+  "flywheel_housing": [
+    809.0,
+    450.0
+  ],
+  "gearbox": [
+    933.0,
+    450.0
+  ],
+  "output_flange": [
+    1026,
+    450.0
+  ],
+  "shaft_end": [
+    1348.0,
+    450.0
+  ],
+  "bow_arrow": [
+    61.0,
+    450.0
+  ],
+  "bow_arrow_tip": [
+    46.0,
+    450.0
+  ],
+  "crankshaft_cl_y": [
+    144.0,
+    450.0
+  ],
+  "shaft_cl_y": [
+    1392,
+    450.0
+  ],
+  "engine_bbox": [
+    144.0,
+    254.0,
+    846.0,
+    646.0
+  ],
+  "engine_bbox_tl": [
+    144.0,
+    254.0
+  ],
+  "engine_bbox_br": [
+    846.0,
+    646.0
+  ],
+  "drivetrain_bbox": [
+    144.0,
+    254.0,
+    1361.0,
+    646.0
+  ],
+  "alternator": [
+    235,
+    300.0
+  ],
+  "starter": [
+    722,
+    614.0
+  ],
+  "air_silencer": [
+    562.0,
+    606.0
+  ],
+  "oil_filter": [
+    424.0,
+    612.0
+  ],
+  "valve_cover": [
+    516.0,
+    450.0
+  ]
+}

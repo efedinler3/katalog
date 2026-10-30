@@ -1,0 +1,1137 @@
+﻿/* Novibrasyon Katalog 2026 — A4 baski stili */
+:root {
+  --b: 0mm;                 /* tasma payi; build.py baski surumunde 3mm yapar */
+  --ink: #0e1a1d;
+  --ink2: #3f4d54;
+  --ink3: #525f66;
+  --teal: #12383f;
+  --teal2: #1d5a66;
+  --aqua: #6cc3cc;
+  --aquaink: #17737d;
+  --panel: #ecebe6;         /* prepare_assets.py PANEL ile ayni */
+  --line: #d8d5cc;
+  --paper: #f7f6f2;         /* kirik beyaz sayfa zemini (prepare_assets.py PAPER) */
+  --galv: #2a2f32;
+  --m: 16mm;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-optical-sizing: auto;
+  color: var(--ink);
+  font-size: 12pt;
+  line-height: 1.4;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  text-rendering: geometricPrecision;
+}
+p, li, .lead, .fnote, .cap, .cap-in, .div-intro, .values span, .steps span { text-wrap: pretty; }
+.fin p, .feat li span, .finnote { text-wrap: balance; }
+.nw { white-space: nowrap; display: inline !important; margin: 0 !important; }
+/* Buyuk basliklar icin Inter Display (statik fontlar yoksa Inter'e duser) */
+.h1, .code, .tagline, .brandline, .glance b, .cover-title, .cover-sub, .div-title, .back-tag,
+.steps em, .contact-strip .big, .vtiles b, .quick em, .irow em {
+  font-family: 'Inter Display', 'Inter', system-ui, sans-serif;
+}
+img { display: block; }
+p { margin: 0; }
+h1, h2, h3, h4 { margin: 0; }
+
+/* ---------- Sayfa iskeleti ---------- */
+.page {
+  position: relative;
+  width: calc(210mm + 2 * var(--b));
+  height: calc(297mm + 2 * var(--b));
+  overflow: hidden;
+  background: var(--paper);
+  break-after: page;
+  page-break-after: always;
+}
+.page:last-child { break-after: auto; page-break-after: auto; }
+.trim { position: absolute; left: var(--b); top: var(--b); width: 210mm; height: 297mm; }
+.page.dark { background: var(--teal); color: #fff; }
+.page.mist { background: var(--panel); }
+
+@media screen {
+  body { background: #7d878b; padding: 12mm 0; }
+  .page { margin: 0 auto 12mm; box-shadow: 0 2mm 10mm rgba(0, 0, 0, .28); }
+}
+
+/* Tam tasma yapan alanlar (trim icinde, tasma payina tasar) */
+.bleed-top { position: absolute; left: calc(-1 * var(--b)); right: calc(-1 * var(--b)); top: calc(-1 * var(--b)); }
+.bleed-x { position: absolute; left: calc(-1 * var(--b)); right: calc(-1 * var(--b)); }
+
+/* ---------- Ust bilgi / sayfa numarasi ---------- */
+.run {
+  position: absolute; left: var(--m); right: var(--m); top: 10mm; height: 7mm;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 9.5pt; font-weight: 500; color: var(--ink3); letter-spacing: .01em;
+}
+.run img { height: 4.6mm; width: auto; }
+.folio {
+  position: absolute; left: var(--m); right: var(--m); bottom: 9mm;
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 9.5pt; color: var(--ink3);
+}
+.folio b { font-size: 11pt; font-weight: 700; color: var(--ink); }
+.dark .run, .dark .folio { color: rgba(255, 255, 255, .7); }
+.dark .folio b { color: #fff; }
+
+/* ---------- Tipografi ---------- */
+.eyebrow {
+  font-size: 10.5pt; font-weight: 650; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--aquaink);
+}
+.dark .eyebrow { color: var(--aqua); }
+.h1 { font-size: 34pt; font-weight: 720; letter-spacing: -.032em; line-height: 1.04; margin-top: 2.5mm; }
+.lead { font-size: 13.5pt; line-height: 1.48; color: var(--ink2); margin-top: 4mm; }
+.dark .lead { color: rgba(255, 255, 255, .84); }
+.num { font-variant-numeric: tabular-nums slashed-zero; }
+
+.head { position: absolute; left: var(--m); right: var(--m); top: 24mm; }
+
+/* ---------- Urun tanitim sayfasi (A) ---------- */
+.hero-head { position: absolute; left: var(--m); right: var(--m); top: 25mm; }
+.brandline { font-size: 24pt; font-weight: 500; letter-spacing: -.015em; color: var(--ink2); margin-top: 6mm; line-height: 1; }
+.code {
+  font-size: 150pt; font-weight: 760; letter-spacing: -.02em; line-height: .8;
+  margin: 3mm 0 0 -2.2mm; color: var(--ink); white-space: nowrap;
+}
+.code.long { font-size: 128pt; line-height: .9375; }
+.tagline { font-size: 21pt; font-weight: 600; letter-spacing: -.02em; margin-top: 7mm; line-height: 1.2; }
+
+.stage {
+  position: absolute; left: var(--m); right: var(--m); top: 113mm; height: 127mm;
+  background: var(--panel); border-radius: 6mm;
+  display: flex; gap: 2mm; padding: 5mm 5mm 4mm;
+}
+.stage figure { flex: 1; margin: 0; display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.stage figure img { flex: 1; min-height: 0; width: 100%; object-fit: contain; }
+.stage figcaption {
+  display: flex; align-items: center; gap: 2.2mm; padding-top: 2.5mm;
+  font-size: 11.5pt; font-weight: 650; color: var(--ink);
+}
+.stage.solo { padding: 3mm 10mm; }
+.stage:not(.solo):not(.trio) figure { justify-content: center; }
+.stage:not(.solo):not(.trio) figure img { flex: none; width: 100%; height: auto; max-height: 100mm; }
+.stage.trio { align-items: center; }
+.stage.trio figure { justify-content: center; }
+.stage.trio figure img { flex: none; height: 64mm; }
+.stage.trio figcaption { font-size: 15pt; font-weight: 750; }
+.swatch {
+  display: inline-block; flex: none; width: 4.4mm; height: 4.4mm; border-radius: 50%;
+  background: var(--galv); box-shadow: inset 0 0 0 .3mm rgba(0, 0, 0, .18);
+}
+.swatch.ss { background: #c6cdd0; box-shadow: inset 0 0 0 .35mm rgba(0, 0, 0, .22); }
+
+.glance {
+  position: absolute; left: var(--m); right: var(--m); top: 249mm;
+  display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 7mm;
+}
+.glance div { border-top: .4mm solid var(--ink); padding-top: 3mm; }
+.glance b { display: block; font-size: 23pt; font-weight: 720; letter-spacing: -.028em; line-height: 1.05; white-space: nowrap; }
+.glance span { display: block; font-size: 11pt; color: var(--ink2); margin-top: 1.6mm; line-height: 1.3; }
+
+/* ---------- Uyum ve ozellikler sayfasi (B) ---------- */
+.flow {
+  position: absolute; left: var(--m); right: var(--m); top: 24mm; bottom: 19mm;
+  display: flex; flex-direction: column; gap: 6.5mm;
+}
+.flow .lead { font-size: 13pt; margin-top: 3mm; }
+.blk h3 {
+  font-size: 10.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--aquaink); margin: 0 0 2.4mm;
+}
+.group {
+  display: grid; grid-template-columns: 46mm 1fr; column-gap: 4mm;
+  padding: 2.4mm 0; border-top: .25mm solid var(--line);
+}
+.group:last-of-type { border-bottom: .25mm solid var(--line); }
+.gl { font-size: 12pt; font-weight: 650; line-height: 1.25; padding-top: 1.2mm; }
+.gl small { display: block; font-size: 10.5pt; font-weight: 500; color: var(--ink3); margin-top: .8mm; white-space: nowrap; }
+.tag {
+  display: inline-block; background: var(--teal); color: #fff; font-size: 10.5pt; font-weight: 650;
+  padding: .9mm 2.4mm; border-radius: 1.4mm; letter-spacing: .01em; line-height: 1.25; white-space: nowrap;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 1.8mm; align-content: flex-start; }
+.chip {
+  font-size: 13pt; font-weight: 600; background: var(--panel); border-radius: 10mm;
+  padding: 1.1mm 3.3mm; line-height: 1.25; white-space: nowrap;
+}
+.chip.text { white-space: normal; border-radius: 3mm; }
+.fnote { font-size: 11pt; color: var(--ink2); margin-top: 2.4mm; line-height: 1.4; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 9mm; }
+.cols.one { grid-template-columns: 1fr; }
+
+table { border-collapse: collapse; width: 100%; }
+.refs td { padding: 2.3mm 0; border-top: .25mm solid var(--line); vertical-align: top; }
+.refs tr:last-child td { border-bottom: .25mm solid var(--line); }
+.refs td.br { font-size: 11.5pt; font-weight: 600; color: var(--ink2); padding-right: 3mm; padding-top: 3mm; line-height: 1.25; }
+.refs td.nums { display: flex; flex-wrap: wrap; column-gap: 5mm; row-gap: 1mm; }
+.pn { font-size: 15pt; font-weight: 720; letter-spacing: .005em; white-space: nowrap; font-feature-settings: "zero" 1; }
+.rnote { font-size: 10.5pt; color: var(--ink3); margin-top: 2mm; }
+
+.spec { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; padding: 2.4mm 0; border-top: .25mm solid var(--line); font-size: 11.5pt; color: var(--ink2); }
+.spec:last-child { border-bottom: .25mm solid var(--line); }
+.spec b { font-size: 14pt; font-weight: 700; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+
+.feat { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 2.6mm 8mm; }
+.feat li { display: flex; gap: 2.6mm; font-size: 12pt; line-height: 1.36; }
+.feat svg { flex: none; width: 5mm; height: 5mm; margin-top: .2mm; color: var(--aquaink); }
+
+.finishes { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+.fin { background: var(--panel); border-radius: 4mm; padding: 4mm 4.5mm; display: flex; gap: 3.4mm; align-items: flex-start; }
+.fin .swatch { width: 8mm; height: 8mm; }
+.fin b { font-size: 13pt; font-weight: 700; display: block; }
+.fin p { font-size: 11pt; color: var(--ink2); margin-top: 1mm; line-height: 1.38; }
+.finnote { font-size: 11pt; color: var(--ink2); margin-top: 2.4mm; }
+
+.vt th {
+  font-size: 10pt; font-weight: 650; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink3); text-align: left; padding: 0 3mm 2mm 0; vertical-align: bottom;
+}
+.vt td { padding: 2.6mm 3mm 2.6mm 0; border-top: .25mm solid var(--line); font-size: 12pt; vertical-align: baseline; line-height: 1.38; }
+.vt tr:last-child td { border-bottom: .25mm solid var(--line); }
+.vt td.k { font-size: 14pt; font-weight: 720; white-space: nowrap; }
+.vt td.big { font-size: 17pt; font-weight: 720; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.vt td.mid { font-size: 13pt; font-weight: 600; white-space: nowrap; }
+.vt td.txt { font-size: 12pt; font-weight: 400; }
+
+.callout { margin-top: auto; background: var(--teal); color: #fff; border-radius: 5mm; padding: 5mm 6.5mm 4.2mm; }
+.cq { display: grid; grid-template-columns: 46mm 1fr; column-gap: 5mm; align-items: start; }
+.callout h4 { font-size: 16pt; font-weight: 700; letter-spacing: -.012em; line-height: 1.15; }
+.callout p { font-size: 11pt; line-height: 1.42; color: rgba(255, 255, 255, .88); }
+.cbar {
+  display: flex; flex-wrap: wrap; column-gap: 10mm; row-gap: 1.8mm; margin-top: 3.2mm; padding-top: 2.8mm;
+  border-top: .25mm solid rgba(255, 255, 255, .22);
+}
+.cbar span.soft { flex-basis: 100%; }
+.cbar span { display: flex; align-items: center; gap: 2mm; font-size: 11.5pt; font-weight: 650; white-space: nowrap; }
+.cbar span.soft { font-weight: 500; color: rgba(255, 255, 255, .82); font-size: 10.5pt; }
+.cbar svg { width: 5mm; height: 5mm; flex: none; color: var(--aqua); }
+.ct { display: flex; flex-direction: column; gap: 2.4mm; }
+.ct div { display: flex; align-items: center; gap: 2.4mm; font-size: 13pt; font-weight: 650; white-space: nowrap; }
+.ct svg { width: 5.2mm; height: 5.2mm; flex: none; color: var(--aqua); }
+
+.refgrid { display: flex; flex-wrap: wrap; gap: 3.4mm 9mm; }
+.refcell { border-left: .7mm solid var(--aqua); padding: .4mm 0 .4mm 3.2mm; }
+.refcell small { display: block; font-size: 11pt; font-weight: 600; color: var(--ink3); margin-bottom: .6mm; }
+.refcell .nums { display: flex; flex-wrap: wrap; gap: .8mm 5mm; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, 56.5mm); gap: 3.5mm; }
+.tiles.wide { grid-template-columns: 1fr 1fr; }
+.tiles.stack { grid-template-columns: 1fr; gap: 3mm; }
+.tiles.stack > div { padding: 2.6mm 3.4mm; }
+.tiles.stack b { font-size: 14pt; }
+.tiles > div { background: var(--panel); border-radius: 3.5mm; padding: 3.4mm 4.2mm 3.2mm; }
+.tiles b { display: block; font-size: 16.5pt; font-weight: 720; letter-spacing: -.015em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.tiles span { display: block; font-size: 10.5pt; color: var(--ink2); margin-top: .8mm; line-height: 1.3; }
+.vtiles b { font-size: 21pt; margin-top: .6mm; }
+.vtiles span:first-child { margin-top: 0; font-weight: 650; color: var(--aquaink); font-size: 11pt; }
+
+/* ---------- Olcu ve fotograf sayfasi (C) ---------- */
+.area { position: absolute; left: var(--m); width: 178mm; }
+.card {
+  position: absolute; background: var(--paper); border: .3mm solid var(--line); border-radius: 4mm;
+  display: flex; align-items: center; justify-content: center; padding: 4mm; overflow: hidden;
+}
+.card img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.card .lbl {
+  position: absolute; left: 4mm; top: 3.2mm; font-size: 12pt; font-weight: 750; color: var(--ink);
+}
+.cap { position: absolute; font-size: 11pt; color: var(--ink2); line-height: 1.4; }
+.cap-in { font-size: 11pt; color: var(--ink2); line-height: 1.4; margin-top: 3mm; }
+.placed { position: absolute; }
+.chartcard { padding: 2mm; }
+.chart text { font-family: 'Inter', system-ui, sans-serif; fill: var(--ink2); }
+.chart .gr { stroke: #d8d5cc; stroke-width: 2; }
+.chart .fr { fill: none; stroke: #8e979b; stroke-width: 2.8; }
+.chart .lgbg { fill: #f7f6f2; stroke: #d8d5cc; stroke-width: 2; }
+.chart .ax { font-weight: 600; }
+.chart .ti { font-weight: 700; fill: var(--ink); }
+.chart .lg { font-weight: 600; fill: var(--ink); }
+.slabel {
+  position: absolute; font-size: 10.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink);
+}
+.slot {
+  position: absolute; border-radius: 4mm; overflow: hidden; background: var(--panel);
+  border: .35mm dashed #aeaaa0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1.6mm; color: var(--ink3); text-align: center;
+}
+.slot svg { width: 10mm; height: 10mm; stroke-width: 1.4; }
+.slot b { font-size: 12.5pt; font-weight: 650; color: var(--ink2); }
+.slot span { font-size: 9pt; }
+.slot.filled { border: 0; background: var(--panel); }
+.slot.filled img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Kapak ---------- */
+.cover-photo { height: calc(297mm + 2 * var(--b)); }
+.cover-photo img { width: 100%; height: 100%; object-fit: cover; }
+.cover-logo { position: absolute; left: var(--m); top: 17mm; width: 74mm; }
+.cover-kicker { position: absolute; right: var(--m); top: 19.5mm; font-size: 10pt; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; color: rgba(255, 255, 255, .78); text-align: right; line-height: 1.5; }
+.cover-title { position: absolute; left: var(--m); right: var(--m); top: 50mm; font-size: 64pt; font-weight: 760; letter-spacing: -.045em; line-height: .98; color: #fff; }
+.cover-sub { position: absolute; left: var(--m); right: var(--m); top: 101mm; font-size: 21pt; font-weight: 500; letter-spacing: -.015em; color: rgba(255, 255, 255, .86); }
+.cover-wave { position: absolute; left: 0; top: 163.5mm; width: 210mm; height: 30mm; overflow: visible; }
+.cover-brands, .cover-foot { text-shadow: 0 0 2.2mm rgba(0, 0, 0, .55); }
+.cover-brands { position: absolute; left: var(--m); right: var(--m); bottom: 25mm; font-size: 11.5pt; font-weight: 500; color: rgba(255, 255, 255, .8); letter-spacing: .005em; }
+.cover-foot {
+  position: absolute; left: var(--m); right: var(--m); bottom: 13mm; border-top: .35mm solid rgba(255, 255, 255, .45);
+  padding-top: 3.4mm; display: flex; justify-content: space-between; font-size: 11.5pt; font-weight: 600; color: #fff;
+}
+
+/* ---------- Karsilama ---------- */
+.photo-top img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
+.cindex { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; margin-top: 7mm; }
+.cindex h3 { font-size: 10.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink); margin-bottom: 2mm; }
+.irow { display: flex; align-items: baseline; gap: 3mm; padding: 2mm 0; border-top: .25mm solid var(--line); }
+.irow:last-child { border-bottom: .25mm solid var(--line); }
+.irow i { font-style: normal; font-weight: 700; color: var(--aquaink); width: 7mm; flex: none; font-size: 11pt; }
+.irow b { font-size: 12.5pt; font-weight: 650; white-space: nowrap; }
+.irow span { flex: 1; font-size: 11pt; color: var(--ink2); white-space: nowrap; }
+.irow em { margin-left: auto; font-style: normal; font-size: 14pt; font-weight: 750; color: var(--aquaink); }
+.values { position: absolute; left: var(--m); right: var(--m); bottom: 21mm; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 7mm; }
+.values div { border-top: .4mm solid var(--ink); padding-top: 3.6mm; }
+.values svg { width: 7mm; height: 7mm; color: var(--aquaink); stroke-width: 1.6; }
+.values b { display: block; font-size: 14.5pt; font-weight: 720; margin-top: 2.2mm; letter-spacing: -.01em; white-space: nowrap; }
+.values div > span { display: block; font-size: 11.5pt; color: var(--ink2); margin-top: 1.4mm; line-height: 1.4; }
+
+/* ---------- Icindekiler ---------- */
+.quick { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 9mm; }
+.quick div { background: var(--panel); border-radius: 4mm; padding: 4.5mm 5mm; display: flex; flex-direction: column; min-height: 30mm; }
+.quick b { font-size: 13.5pt; font-weight: 700; }
+.quick span { font-size: 10.5pt; color: var(--ink2); margin-top: 1mm; line-height: 1.35; }
+.quick em { font-style: normal; margin-top: auto; font-size: 22pt; font-weight: 750; letter-spacing: -.03em; color: var(--aquaink); }
+.toc { display: grid; grid-template-columns: 1fr 1fr; column-gap: 9mm; row-gap: 8mm; margin-top: 10mm; }
+.toc > div { min-width: 0; }
+.toc .sec-n { font-size: 11pt; font-weight: 700; color: var(--aquaink); letter-spacing: .1em; }
+.toc h2 { font-size: 17pt; font-weight: 720; letter-spacing: -.02em; margin: 1mm 0 2.4mm; }
+.toc .row { display: flex; align-items: baseline; gap: 2mm; padding: 1.9mm 0; border-top: .25mm solid var(--line); font-size: 12.5pt; }
+.toc .row:last-child { border-bottom: .25mm solid var(--line); }
+.toc .row span { color: var(--ink2); font-size: 11pt; flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.toc .row b { font-weight: 650; white-space: nowrap; }
+.toc .row em { font-style: normal; font-weight: 700; min-width: 7mm; text-align: right; }
+
+/* ---------- Motor bulucu ---------- */
+.finder { margin-top: 7mm; }
+.brandhead { font-size: 14.5pt; font-weight: 750; letter-spacing: -.015em; color: var(--teal); padding: 2.4mm 0 1.2mm; border-bottom: .5mm solid var(--teal); }
+.frow { display: grid; grid-template-columns: 1fr auto; column-gap: 6mm; padding: 1.5mm 0; border-bottom: .25mm solid var(--line); }
+.frow { align-items: center; }
+.frow .en b { display: block; font-size: 13pt; font-weight: 700; }
+.frow .en > span { display: block; font-size: 11.5pt; color: var(--ink2); line-height: 1.38; margin-top: .6mm; }
+.mps { display: flex; flex-wrap: wrap; gap: 1.6mm; align-content: flex-start; justify-content: flex-end; max-width: 112mm; }
+.mp {
+  display: inline-flex; align-items: baseline; gap: 1.8mm; border: .3mm solid var(--line); border-radius: 2mm;
+  padding: .55mm 2.2mm; background: var(--paper); max-width: 100%;
+}
+.mp b { font-size: 14.5pt; font-weight: 760; white-space: nowrap; letter-spacing: -.005em; }
+.mp i { font-style: normal; font-size: 11pt; color: var(--ink2); line-height: 1.3; }
+.mp em { font-style: normal; font-size: 11pt; font-weight: 700; color: var(--aquaink); white-space: nowrap; }
+.guide { margin-top: 7mm; background: var(--panel); border-radius: 4mm; padding: 5mm 6mm; }
+.guide h3 { font-size: 10.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink); margin-bottom: 2.4mm; }
+.guide ol { margin: 0; padding-left: 5.5mm; display: grid; gap: 2.2mm; }
+.guide li { font-size: 11.5pt; line-height: 1.42; color: var(--ink2); padding-left: 1mm; }
+.guide li b { color: var(--ink); }
+.foot-note { font-size: 10.5pt; color: var(--ink2); line-height: 1.45; margin-top: 4mm; }
+
+/* ---------- Parca numarasi ---------- */
+.pnc { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; margin-top: 5mm; }
+.pncol { min-width: 0; }
+.pncol .brandhead:not(:first-child) { margin-top: 5mm; }
+.pnrow { display: flex; align-items: center; justify-content: space-between; gap: 3mm; padding: 1.3mm 0; border-bottom: .25mm solid var(--line); }
+.pnrow .pn { font-size: 15pt; }
+
+/* ---------- Bolum ayraci ---------- */
+.div-img { top: calc(-1 * var(--b)); height: calc(128mm + var(--b)); }
+.div-img img { width: 100%; height: 100%; object-fit: cover; }
+.div-img.product { background: var(--panel); padding: 12mm 18mm 8mm; }
+.div-img.product img { object-fit: contain; }
+.div-text { position: absolute; left: var(--m); right: var(--m); top: 141mm; }
+.div-num { font-size: 13pt; font-weight: 700; letter-spacing: .12em; color: var(--aqua); }
+.div-title { font-size: 46pt; font-weight: 750; letter-spacing: -.038em; line-height: 1; margin-top: 3mm; }
+.div-intro { font-size: 14.5pt; line-height: 1.45; color: rgba(255, 255, 255, .84); margin-top: 5mm; max-width: 165mm; }
+.div-list { margin-top: 8mm; border-top: .3mm solid rgba(255, 255, 255, .3); }
+.div-list div { display: flex; align-items: baseline; gap: 4mm; padding: 2.3mm 0; border-bottom: .3mm solid rgba(255, 255, 255, .18); font-size: 12.5pt; padding: 1.9mm 0; }
+.div-list b { font-weight: 700; white-space: nowrap; min-width: 74mm; }
+.div-list span { flex: 1; color: rgba(255, 255, 255, .78); font-size: 11.5pt; }
+.div-list em { font-style: normal; font-weight: 700; }
+
+/* ---------- Yataklar ---------- */
+.bcards { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; margin-top: 9mm; }
+.bcard .im { background: var(--panel); border-radius: 5mm; height: 92mm; padding: 5mm; }
+.bcard .im img { width: 100%; height: 100%; object-fit: contain; }
+.bcard h2 { font-size: 20pt; font-weight: 720; letter-spacing: -.02em; margin: 5mm 0 3mm; }
+
+/* ---------- Siparis ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 7mm; margin-top: 9mm; }
+.steps div { border-top: .4mm solid var(--ink); padding-top: 3.6mm; }
+.steps em { font-style: normal; font-size: 30pt; font-weight: 760; color: var(--aquaink); letter-spacing: -.03em; line-height: 1; }
+.steps b { display: block; font-size: 14.5pt; font-weight: 720; margin-top: 2.4mm; letter-spacing: -.01em; }
+.steps span { display: block; font-size: 11.5pt; color: var(--ink2); margin-top: 1.6mm; line-height: 1.42; }
+.ship-img { border-radius: 5mm; overflow: hidden; margin-top: 9mm; height: 124mm; }
+.ship-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.contact-strip { margin-top: 7mm; background: var(--teal); color: #fff; border-radius: 5mm; padding: 6mm 7mm; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 8mm; align-items: center; }
+.contact-strip .big { font-size: 25pt; font-weight: 750; letter-spacing: -.02em; white-space: nowrap; }
+.contact-strip.bottom { position: absolute; left: var(--m); right: var(--m); bottom: 19mm; margin: 0; }
+.contact-strip .lbl { font-size: 10pt; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; color: var(--aqua); margin-bottom: 1.4mm; }
+
+/* ---------- Arka kapak ---------- */
+.back-photo { height: calc(297mm + 2 * var(--b)); }
+.back-photo img { width: 100%; height: 100%; object-fit: cover; }
+.back-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 34, 40, .82) 0%, rgba(10, 34, 40, .70) 45%, rgba(8, 26, 31, .88) 100%); }
+.back-logo { position: absolute; left: 50%; top: 74mm; width: 96mm; transform: translateX(-50%); }
+.back-tag { position: absolute; left: var(--m); right: var(--m); top: 104mm; text-align: center; font-size: 20pt; font-weight: 550; letter-spacing: -.015em; color: rgba(255, 255, 255, .9); }
+.back-contacts { position: absolute; left: 36mm; right: 36mm; top: 142mm; }
+.back-contacts div { display: flex; align-items: center; gap: 4.5mm; padding: 3.6mm 0; border-bottom: .3mm solid rgba(255, 255, 255, .2); font-size: 15pt; font-weight: 600; }
+.back-contacts div:first-child { border-top: .3mm solid rgba(255, 255, 255, .2); }
+.back-contacts svg { width: 7mm; height: 7mm; color: var(--aqua); flex: none; }
+.back-contacts small { display: block; font-size: 11pt; font-weight: 500; color: rgba(255, 255, 255, .7); }
+.back-foot { position: absolute; left: var(--m); right: var(--m); bottom: 14mm; text-align: center; font-size: 10pt; color: rgba(255, 255, 255, .62); line-height: 1.5; }
+
+/* ---------- Otomatik sigdirma (build.py icindeki script) ---------- */
+.fit { display: flex; flex-direction: column; gap: 6.5mm; }
+.flow.index { bottom: 20mm; gap: 0; }
+
+/* =====================================================================
+   v4: teknik giris, yeni motor bulucu, arka kapak, teknik cizimler
+   ===================================================================== */
+.art { display: block; overflow: visible; }
+.sect, .anat-list h3, .tech-chart h3, .fx h3, .fx2 h3 {
+  font-size: 10.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink); margin-bottom: 2.4mm;
+}
+
+/* ---------- Teknik giris 1 ---------- */
+.tech-anat { display: grid; grid-template-columns: 94mm 1fr; column-gap: 7mm; margin-top: 5mm; align-items: stretch; }
+.anat-card { background: var(--panel); border-radius: 5mm; min-height: 70mm; padding: 3mm 2mm; color: var(--ink); display: flex; align-items: center; justify-content: center; }
+.anat-card svg { width: 100%; height: 100%; }
+.parts { list-style: none; margin: 0; padding: 0; }
+.parts li { display: flex; gap: 3.4mm; padding: 1.35mm 0; border-top: .25mm solid var(--line); }
+.parts li:last-child { border-bottom: .25mm solid var(--line); }
+.parts i { font-style: normal; flex: none; width: 6.6mm; height: 6.6mm; border-radius: 50%; background: var(--teal); color: #fff; font-size: 10.5pt; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: .3mm; }
+.parts b { display: block; font-size: 12.5pt; font-weight: 700; }
+.parts span { display: block; font-size: 11pt; color: var(--ink2); line-height: 1.36; margin-top: .4mm; }
+.tech-chart { margin-top: 5mm; }
+.tech-chart .cap-in { margin-top: 2.4mm; }
+.tech-chart .chartcard { position: relative; padding: 2mm; }
+
+/* ---------- Teknik giris 2 ---------- */
+.kcards { display: grid; grid-template-columns: 1fr 1fr; gap: 3.4mm; margin-top: 5mm; }
+.kcard { background: var(--panel); border-radius: 4mm; padding: 3.6mm 4.6mm 4mm; display: grid; grid-template-columns: 8mm 1fr; column-gap: 2mm; }
+.kcard span { grid-column: 2; }
+.kcard i { font-style: normal; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 22pt; font-weight: 760; color: var(--aquaink); line-height: 1; }
+.kcard b { display: block; font-size: 14pt; font-weight: 720; margin-top: .6mm; letter-spacing: -.01em; }
+.kcard span { display: block; font-size: 11.5pt; color: var(--ink2); line-height: 1.4; margin-top: 1.2mm; }
+.head .sect { margin-top: 6.5mm; }
+.shlab { display: flex; justify-content: space-between; font-size: 10pt; font-weight: 650; color: var(--ink3); letter-spacing: .06em; text-transform: uppercase; }
+.shbar { height: 3.2mm; border-radius: 1.6mm; margin-top: 1.4mm; background: linear-gradient(90deg, #cde9ec 0%, #5fb3bd 45%, #17737d 70%, #12383f 100%); }
+.shs { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 7mm; margin-top: 3.6mm; }
+.sh em { font-style: normal; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 24pt; font-weight: 760; letter-spacing: -.03em; line-height: 1; }
+.sh small { font-size: 11pt; font-weight: 650; color: var(--ink2); margin-left: 1.4mm; }
+.sh.s45 em { color: #3f9aa5; }
+.sh.s55 em { color: #17737d; }
+.sh.s65 em { color: #12383f; }
+.sh b { display: block; font-size: 13pt; font-weight: 720; margin-top: 1.6mm; }
+.sh span { display: block; font-size: 11.5pt; color: var(--ink2); line-height: 1.4; margin-top: .8mm; }
+.feat.signs li { font-size: 12pt; }
+.tipline { margin-top: 5mm; padding: 3.4mm 5mm; border-left: 1.2mm solid var(--aquaink); background: var(--panel); border-radius: 0 3mm 3mm 0; font-size: 12pt; line-height: 1.45; color: var(--ink); }
+
+/* ---------- Motor bulucu: giris ---------- */
+.fsteps { margin-top: 7mm; }
+.fx { margin-top: 7mm; display: grid; grid-template-columns: minmax(0, 1fr) 64mm; column-gap: 6mm; align-items: start; }
+.fx-dia { margin-top: 7mm; background: var(--panel); border-radius: 5mm; padding: 5mm 6mm 4mm 5mm; display: grid; grid-template-columns: 108mm minmax(0, 1fr); column-gap: 6mm; align-items: center; }
+.fxd-r .cap-in { margin-top: 0; font-size: 11.5pt; line-height: 1.45; }
+.fx-dia h3 { font-size: 10.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink); margin-bottom: 6mm; }
+.posdia { position: relative; margin: 1mm auto 0; color: var(--ink); }
+.posdia svg { width: 100%; height: 100%; }
+.dl { position: absolute; transform: translate(-50%, -50%); font-size: 11pt; font-weight: 700; white-space: nowrap; padding: .9mm 2.6mm; border-radius: 1.6mm; line-height: 1.2; }
+.dl.front { background: var(--teal); color: #fff; }
+.dl.rear { background: #cfeaec; color: var(--ink); }
+.fx-key .mc { margin-top: 1mm; }
+.fxd-r .ptlegend { margin-top: 5mm; }
+.keychip .mc { max-width: 64mm; }
+.klabels { display: grid; grid-template-columns: 11.6mm 1fr auto; column-gap: 2.4mm; max-width: 64mm; padding: 0 2mm 0 1.2mm; margin-top: 1.4mm; font-size: 9.5pt; color: var(--ink3); font-weight: 600; }
+.klabels span:last-child { text-align: right; }
+.ptlegend { display: flex; flex-wrap: wrap; gap: 2mm; margin-top: 4mm; }
+.ptlegend .pt { margin-top: 0; font-size: 10.5pt; }
+.fx2 { display: grid; grid-template-columns: 64mm minmax(0, 1fr); column-gap: 8mm; margin-top: 7mm; }
+.bidx { display: grid; grid-template-columns: 1fr 1fr; column-gap: 7mm; }
+.bidx div { display: flex; align-items: baseline; justify-content: space-between; gap: 3mm; padding: 1.5mm 0; border-bottom: .25mm solid var(--line); }
+.bidx div:nth-child(-n+2) { border-top: .25mm solid var(--line); }
+.bidx b { font-size: 11.5pt; font-weight: 700; line-height: 1.25; }
+.bidx em { font-style: normal; font-size: 14pt; font-weight: 750; color: var(--aquaink); }
+
+/* ---------- Motor bulucu: tablolar ---------- */
+.h2t { font-family: 'Inter Display', 'Inter', sans-serif; font-size: 25pt; font-weight: 720; letter-spacing: -.03em; line-height: 1.1; margin-top: 2mm; }
+.finder2 { margin-top: 3mm; }
+.bband { display: flex; align-items: baseline; gap: 3mm; background: var(--teal); color: #fff; border-radius: 2.5mm; padding: 1.5mm 4mm; margin-top: 3.4mm; }
+.finder2 > .bband:first-child { margin-top: 0; }
+.bband span { font-size: 14.5pt; font-weight: 750; letter-spacing: -.005em; }
+.bband em { font-style: normal; font-size: 10.5pt; color: var(--aqua); font-weight: 650; }
+.fr2 { display: grid; grid-template-columns: minmax(0, 1fr) 114mm; column-gap: 4mm; align-items: center; padding: 1.5mm 2.6mm; border-radius: 2.5mm; margin-top: .9mm; }
+.fr2 .ml { grid-column: 1 / -1; font-size: 10.5pt; color: var(--ink2); line-height: 1.4; margin-top: 1.4mm; }
+.fr2.alt { background: var(--panel); }
+.fr2 .en b { display: block; font-size: 13.5pt; font-weight: 720; letter-spacing: -.01em; line-height: 1.22; }
+.fr2 .en > span { display: block; font-size: 10.5pt; color: var(--ink2); line-height: 1.4; margin-top: .7mm; }
+.mcs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.8mm; }
+.mc { display: grid; grid-template-columns: 11.6mm minmax(0, 1fr) auto; align-items: center; column-gap: 2.4mm; background: #fdfcfa; border: .3mm solid #dcd8ce; border-radius: 2.6mm; padding: .9mm 2.2mm .9mm .9mm; min-height: 13.4mm; }
+.mc .th { width: 11.6mm; height: 11.6mm; border-radius: 1.7mm; overflow: hidden; background: var(--panel); }
+.mc .th img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mc .mi { min-width: 0; }
+.mc .mi b { display: block; font-size: 16pt; font-weight: 760; letter-spacing: -.01em; line-height: 1.05; white-space: nowrap; }
+.pt { display: inline-block; margin-top: .9mm; font-size: 9.5pt; font-weight: 650; padding: .3mm 1.7mm .4mm; border-radius: 1.2mm; line-height: 1.3; }
+.pt.front { background: var(--teal); color: #fff; }
+.pt.rear { background: #cfeaec; color: var(--ink); }
+.pt.side { color: var(--teal); box-shadow: inset 0 0 0 .3mm var(--teal); }
+.pt.shore { background: #e4e1d7; color: var(--ink); }
+.pt.note { color: var(--ink2); padding-left: 0; font-weight: 550; }
+.pn2 { display: block; font-size: 9.5pt; color: var(--ink2); margin-top: .5mm; line-height: 1.25; }
+.mc .pg { text-align: center; line-height: 1; padding-left: 1.6mm; border-left: .25mm solid var(--line); min-width: 11mm; }
+.mc .pg small { display: block; font-size: 7.5pt; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); }
+.mc .pg b { display: block; font-size: 17pt; font-weight: 760; color: var(--aquaink); margin-top: .7mm; letter-spacing: -.01em; }
+.finder2 .guide { margin-top: 6mm; }
+
+/* ---------- Kapak: teknik cizim ---------- */
+.cover-engine { position: absolute; color: #fff; --accent: #a6f0f4; --accent-fill: rgba(166, 240, 244, .30); }
+.cover-engine.halo { color: rgba(4, 22, 27, .50); --accent: rgba(4, 22, 27, .50); --accent-fill: transparent; }
+.cover-engine.halo * { stroke-width: 9px; }
+.cover-engine.halo .center, .cover-engine.halo .dim, .cover-engine.halo #engine-side-bed { display: none; }
+
+/* ---------- Arka kapak v4 ---------- */
+.page.back .back-logo { top: 30mm; width: 92mm; }
+.page.back .back-tag { top: 58mm; font-size: 19pt; }
+.back-line { position: absolute; left: var(--m); right: var(--m); top: 80mm; display: grid; grid-template-columns: repeat(5, 1fr); column-gap: 5mm; text-align: center; }
+.back-line .bt { display: block; aspect-ratio: 1; border-radius: 4mm; overflow: hidden; background: var(--panel); }
+.back-line img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.back-line b { display: block; font-size: 13pt; font-weight: 750; margin-top: 2.4mm; }
+.back-line small { display: block; font-size: 10pt; color: rgba(255, 255, 255, .72); margin-top: .4mm; }
+.back-qr { position: absolute; left: var(--m); right: var(--m); top: 135mm; display: grid; grid-template-columns: 1fr 1fr; column-gap: 6mm; }
+.qrc { display: flex; gap: 4.5mm; align-items: center; background: rgba(255, 255, 255, .08); border: .3mm solid rgba(255, 255, 255, .18); border-radius: 4mm; padding: 4mm; }
+.qrc .qr { flex: none; width: 27mm; height: 27mm; background: #fff; color: #0e1a1d; border-radius: 2mm; padding: 1.2mm; }
+.qrc b { display: block; font-size: 13.5pt; font-weight: 720; }
+.qrc span { display: block; font-size: 10.5pt; color: rgba(255, 255, 255, .8); line-height: 1.4; margin-top: 1.2mm; }
+.page.back .back-contacts { left: var(--m); right: var(--m); top: 186mm; display: grid; grid-template-columns: 1fr 1fr; column-gap: 8mm; }
+.page.back .back-contacts div { padding: 3mm 0; font-size: 13.5pt; }
+.page.back .back-contacts div:nth-child(2) { border-top: .3mm solid rgba(255, 255, 255, .2); }
+.page.back .back-contacts .wide { grid-column: 1 / -1; }
+.page.back .back-foot { bottom: 12mm; font-size: 9.5pt; }
+
+/* =====================================================================
+   v5 (2026-10): kompakt A4 - urun basina 2 sayfa, kucuk yazilar,
+   koyu ust bant, bolum renkli kenar sekmeleri, tam sayfa fotograf sayfalari.
+   Mobil surum (body.m) etkilenmesin diye body:not(.m) ile sinirli.
+   ===================================================================== */
+body:not(.m) { font-size: 10pt; }
+
+/* ---------- Ust bant, kenar sekmesi, sayfa numarasi ---------- */
+body:not(.m) .band {
+  position: absolute; left: calc(-1 * var(--b)); right: calc(-1 * var(--b)); top: calc(-1 * var(--b));
+  height: calc(13mm + var(--b)); background: var(--teal); border-bottom: 1.1mm solid var(--acc, var(--aqua));
+}
+body:not(.m) .band-in {
+  position: absolute; left: calc(var(--m) + var(--b)); right: calc(var(--m) + var(--b)); bottom: 0; height: 13mm;
+  display: flex; align-items: center; justify-content: space-between;
+  color: rgba(255, 255, 255, .86); font-size: 8pt; font-weight: 650; letter-spacing: .12em; text-transform: uppercase;
+}
+body:not(.m) .band-in img { height: 4mm; width: auto; }
+body:not(.m) .ttab {
+  position: absolute; width: calc(6.5mm + var(--b)); height: 32mm; display: flex; align-items: center;
+  justify-content: center; color: #fff; font-size: 9pt; font-weight: 760; letter-spacing: .04em;
+}
+body:not(.m) .ttab.r { right: calc(-1 * var(--b)); padding-right: var(--b); border-radius: 2mm 0 0 2mm; }
+body:not(.m) .ttab.l { left: calc(-1 * var(--b)); padding-left: var(--b); border-radius: 0 2mm 2mm 0; }
+body:not(.m) .ttab span { writing-mode: vertical-rl; transform: rotate(180deg); }
+body:not(.m) .folio { bottom: 7.5mm; font-size: 7.5pt; }
+body:not(.m) .folio b { font-size: 9.5pt; }
+
+/* ---------- Tipografi ---------- */
+body:not(.m) .eyebrow { font-size: 8.5pt; letter-spacing: .14em; }
+body:not(.m) .h1 { font-size: 24pt; margin-top: 1.5mm; }
+body:not(.m) .h2 { font-family: 'Inter Display', 'Inter', system-ui, sans-serif; font-size: 17pt; font-weight: 730; letter-spacing: -.025em; line-height: 1.1; margin-top: 1mm; }
+body:not(.m) .lead { font-size: 10pt; line-height: 1.45; margin-top: 2.5mm; }
+body:not(.m) .head { top: 21mm; }
+body:not(.m) .flow { top: 21mm; bottom: 15mm; gap: 4.2mm; }
+body:not(.m) .flow .lead { font-size: 9.5pt; margin-top: 1.5mm; }
+body:not(.m) .fit { gap: 4.2mm; }
+body:not(.m) .blk h3, body:not(.m) .sect, body:not(.m) .anat-list h3, body:not(.m) .photos h3, body:not(.m) .dth {
+  font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink); margin: 0 0 1.6mm;
+}
+
+/* ---------- Karsilama ---------- */
+body:not(.m) .cindex { margin-top: 5mm; column-gap: 9mm; }
+body:not(.m) .cindex h3 { font-size: 8pt; }
+body:not(.m) .irow { padding: 1.5mm 0; gap: 2.4mm; }
+body:not(.m) .irow i { font-size: 9pt; width: 6mm; }
+body:not(.m) .irow b { font-size: 10pt; }
+body:not(.m) .irow span { font-size: 8.5pt; }
+body:not(.m) .irow em { font-size: 10.5pt; white-space: nowrap; }
+body:not(.m) .values { bottom: 18mm; }
+body:not(.m) .values svg { width: 5.5mm; height: 5.5mm; }
+body:not(.m) .values b { font-size: 11pt; margin-top: 1.6mm; }
+body:not(.m) .values div > span { font-size: 9pt; }
+
+/* ---------- Teknik giris (tek sayfa) ---------- */
+body:not(.m) .tech-anat { grid-template-columns: 78mm 1fr; column-gap: 6mm; margin-top: 4mm; }
+body:not(.m) .anat-card { min-height: 56mm; border-radius: 4mm; }
+body:not(.m) .parts li { padding: 1mm 0; gap: 2.6mm; }
+body:not(.m) .parts i { width: 5mm; height: 5mm; font-size: 8pt; }
+body:not(.m) .parts b { font-size: 9.5pt; }
+body:not(.m) .parts span { font-size: 8.5pt; }
+body:not(.m) .head .sect { margin-top: 5mm; }
+body:not(.m) .kcards { gap: 2.4mm; margin-top: 0; }
+body:not(.m) .kcard { padding: 2.4mm 3.4mm 2.6mm; grid-template-columns: 6mm 1fr; border-radius: 3mm; }
+body:not(.m) .kcard i { font-size: 15pt; }
+body:not(.m) .kcard b { font-size: 10pt; margin-top: .2mm; }
+body:not(.m) .kcard span { font-size: 8.5pt; margin-top: .6mm; }
+body:not(.m) .shlab { font-size: 7.5pt; }
+body:not(.m) .shbar { height: 2.4mm; }
+body:not(.m) .shs { margin-top: 2.4mm; }
+body:not(.m) .sh em { font-size: 16pt; }
+body:not(.m) .sh small { font-size: 8.5pt; }
+body:not(.m) .sh b { font-size: 10pt; margin-top: .8mm; }
+body:not(.m) .sh span { font-size: 8.5pt; }
+body:not(.m) .feat { gap: 1.6mm 6mm; }
+body:not(.m) .feat li { font-size: 9pt; gap: 2mm; }
+body:not(.m) .feat svg { width: 4mm; height: 4mm; }
+body:not(.m) .tipline { margin-top: 3.6mm; font-size: 9pt; padding: 2.4mm 4mm; }
+
+/* ---------- Motor bulucu ---------- */
+body:not(.m) .fintro .h1 { font-size: 22pt; }
+body:not(.m) .fsteps { margin: 3mm 0 1.5mm; column-gap: 5mm; }
+body:not(.m) .steps div { padding-top: 2.2mm; }
+body:not(.m) .steps em { font-size: 17pt; }
+body:not(.m) .steps b { font-size: 10pt; margin-top: 1.2mm; }
+body:not(.m) .steps span { font-size: 8.5pt; margin-top: .8mm; }
+body:not(.m) .finder2 { margin-top: 1.5mm; }
+body:not(.m) .bband { padding: 1mm 3mm; margin-top: 2.2mm; border-radius: 2mm; }
+body:not(.m) .bband span { font-size: 10.5pt; }
+body:not(.m) .bband em { font-size: 8pt; }
+body:not(.m) .fr2 { grid-template-columns: minmax(0, 1fr) 120mm; column-gap: 3mm; padding: 1mm 2mm; margin-top: .6mm; border-radius: 2mm; }
+body:not(.m) .fr2 .en b { font-size: 10pt; }
+body:not(.m) .fr2 .en > span, body:not(.m) .fr2 .ml { font-size: 8pt; margin-top: .4mm; }
+body:not(.m) .mcs { grid-template-columns: repeat(3, 1fr); gap: 1.2mm; }
+body:not(.m) .mc { grid-template-columns: 8mm minmax(0, 1fr) auto; column-gap: 1.8mm; min-height: 9.4mm; padding: .6mm 1.6mm .6mm .6mm; border-radius: 2mm; }
+body:not(.m) .mc .th { width: 8mm; height: 8mm; border-radius: 1.3mm; }
+body:not(.m) .mc .mi b { font-size: 11.5pt; }
+body:not(.m) .pt { font-size: 7pt; margin-top: .4mm; padding: .1mm 1.2mm .2mm; }
+body:not(.m) .pn2 { font-size: 7pt; }
+body:not(.m) .mc .pg { font-size: 9pt; font-weight: 760; color: var(--aquaink); white-space: nowrap; min-width: 0; padding-left: 1.4mm; }
+
+/* ---------- Parca numarasi ---------- */
+body:not(.m) .pnc { margin-top: 3mm; column-gap: 9mm; }
+body:not(.m) .brandhead { font-size: 11pt; padding: 1.8mm 0 1mm; }
+body:not(.m) .pnrow { padding: 1mm 0; }
+body:not(.m) .pnrow .pn { font-size: 11pt; }
+body:not(.m) .mps { justify-content: flex-start; }
+body:not(.m) .mp { padding: .3mm 1.8mm; gap: 1.4mm; }
+body:not(.m) .mp b { font-size: 10.5pt; }
+body:not(.m) .mp em { font-size: 8.5pt; }
+
+/* ---------- Bolum ayraci ve tam sayfa fotograf ---------- */
+body:not(.m) .div-img { height: calc(122mm + var(--b)); }
+body:not(.m) .div-text { top: 134mm; }
+body:not(.m) .div-num { font-size: 11pt; }
+body:not(.m) .div-title { font-size: 34pt; }
+body:not(.m) .div-intro { font-size: 11pt; margin-top: 3.5mm; }
+body:not(.m) .div-list { margin-top: 6mm; }
+body:not(.m) .div-list div { font-size: 10pt; padding: 1.6mm 0; }
+body:not(.m) .div-list b { min-width: 62mm; }
+body:not(.m) .div-list span { font-size: 9pt; }
+body:not(.m) .div-list em { white-space: nowrap; }
+body:not(.m) .fullphoto { height: calc(297mm + 2 * var(--b)); }
+body:not(.m) .fullphoto img { width: 100%; height: 100%; object-fit: cover; }
+body:not(.m) .fullphoto.empty {
+  background: linear-gradient(160deg, #1d4a53 0%, #12383f 55%, #0b262b 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2mm;
+  color: rgba(255, 255, 255, .55); text-align: center;
+}
+body:not(.m) .fullphoto.empty svg { width: 12mm; height: 12mm; stroke-width: 1.3; }
+body:not(.m) .fullphoto.empty b { font-size: 12pt; font-weight: 650; color: rgba(255, 255, 255, .7); }
+body:not(.m) .fullphoto.empty span { font-size: 8pt; }
+
+/* ---------- Urun sol sayfa ---------- */
+body:not(.m) .ptop { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 7mm; align-items: end; }
+body:not(.m) .pcode .brandline { font-size: 11.5pt; margin-top: 0; }
+body:not(.m) .pcode .code { font-size: 66pt; line-height: .82; margin: 1.5mm 0 0 -1.2mm; }
+body:not(.m) .pcode .code.long { font-size: 50pt; line-height: .9; }
+body:not(.m) .ptext { padding-bottom: .6mm; }
+body:not(.m) .ptext .tagline { font-size: 14pt; font-weight: 700; margin-top: 0; letter-spacing: -.015em; line-height: 1.2; }
+body:not(.m) .ptext .lead { font-size: 9pt; margin-top: 1.2mm; line-height: 1.4; }
+body:not(.m) .flow.prod .stage {
+  position: relative; left: auto; right: auto; top: auto; flex: none; height: 86mm;
+  border-radius: 4mm; padding: 3mm 4mm 2.5mm; gap: 2mm;
+}
+body:not(.m) .flow.prod .stage figcaption { font-size: 9pt; gap: 1.6mm; padding-top: 1.6mm; }
+body:not(.m) .flow.prod .stage .swatch { width: 3.4mm; height: 3.4mm; }
+body:not(.m) .flow.prod .stage:not(.solo):not(.trio) figure img { max-height: 72mm; }
+body:not(.m) .flow.prod .stage.trio figure img { height: 52mm; }
+body:not(.m) .flow.prod .stage.trio figcaption { font-size: 11pt; }
+body:not(.m) .kfig {
+  display: grid; column-gap: 4mm; background: var(--teal); color: #fff; border-radius: 3mm; padding: 3mm 4.5mm;
+}
+body:not(.m) .kfig.n2 { grid-template-columns: repeat(2, 1fr); }
+body:not(.m) .kfig.n3 { grid-template-columns: repeat(3, 1fr); }
+body:not(.m) .kfig.n4 { grid-template-columns: repeat(4, 1fr); }
+body:not(.m) .kfig div { min-width: 0; }
+body:not(.m) .kfig b { display: block; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 13pt; font-weight: 720; letter-spacing: -.015em; line-height: 1.1; white-space: nowrap; }
+body:not(.m) .kfig .kload b { font-size: 17pt; color: #a6eef2; }
+body:not(.m) .kfig span { display: block; font-size: 7.5pt; color: rgba(255, 255, 255, .72); margin-top: .8mm; line-height: 1.25; }
+body:not(.m) .group { grid-template-columns: 36mm 1fr; column-gap: 3mm; padding: 1.5mm 0; }
+body:not(.m) .gl { font-size: 9.5pt; padding-top: .6mm; }
+body:not(.m) .gl small { font-size: 7.5pt; }
+body:not(.m) .tag { font-size: 7.5pt; padding: .5mm 1.8mm; border-radius: 1mm; }
+body:not(.m) .chips { gap: 1.1mm; }
+body:not(.m) .chip { font-size: 9pt; padding: .6mm 2.2mm; }
+body:not(.m) .fnote, body:not(.m) .rnote { font-size: 8pt; margin-top: 1.5mm; }
+body:not(.m) .refgrid { gap: 2mm 6mm; }
+body:not(.m) .refcell { padding-left: 2.4mm; border-left-width: .6mm; }
+body:not(.m) .refcell small { font-size: 8pt; margin-bottom: .3mm; }
+body:not(.m) .refcell .nums { gap: .4mm 4mm; }
+body:not(.m) .pn { font-size: 11pt; }
+
+/* ---------- Urun sag sayfa ---------- */
+body:not(.m) .dgrid { display: grid; grid-template-columns: minmax(0, 1fr) 66mm; column-gap: 5mm; align-items: start; }
+body:not(.m) .dgrid.sd { grid-template-columns: 1fr 1fr; margin-top: 1mm; align-items: end; }
+body:not(.m) .dcard {
+  position: relative; background: #fbfaf7; border: .3mm solid var(--line); border-radius: 3mm; height: 98mm;
+  padding: 3mm; display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+body:not(.m) .dcard img { max-width: 100%; max-height: 100%; object-fit: contain; }
+body:not(.m) .dcard.wide { height: 74mm; }
+body:not(.m) .dcard.tri { height: 70mm; padding-top: 8mm; }
+body:not(.m) .dcard .lbl { position: absolute; left: 3mm; top: 2mm; font-size: 10pt; font-weight: 750; }
+body:not(.m) .dtri { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+body:not(.m) table.dt { width: 100%; border-collapse: collapse; }
+body:not(.m) table.dt td { padding: 1.35mm 0; border-top: .25mm solid var(--line); vertical-align: baseline; }
+body:not(.m) table.dt tr:last-child td { border-bottom: .25mm solid var(--line); }
+body:not(.m) table.dt td.lbl { font-size: 8.5pt; color: var(--ink2); padding-right: 2mm; }
+body:not(.m) table.dt td.val { font-size: 10pt; font-weight: 700; text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+body:not(.m) table.dt.multi th { font-size: 9.5pt; font-weight: 760; text-align: right; padding: 0 0 1.2mm 3mm; }
+body:not(.m) table.dt.multi td.val { font-size: 9pt; padding-left: 3mm; white-space: normal; }
+body:not(.m) .capline { font-size: 7.5pt; color: var(--ink3); margin-top: 1.4mm; line-height: 1.35; }
+body:not(.m) .ltiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+body:not(.m) .ltiles div { background: var(--panel); border-radius: 3mm; padding: 2.4mm 3.4mm 2.6mm; }
+body:not(.m) .ltiles span { display: block; font-size: 8.5pt; font-weight: 700; color: var(--aquaink); }
+body:not(.m) .ltiles b { display: block; font-family: 'Inter Display', 'Inter', sans-serif; font-size: 20pt; font-weight: 760; letter-spacing: -.02em; line-height: 1.1; margin-top: .4mm; }
+body:not(.m) .ltiles small { display: block; font-size: 7.5pt; color: var(--ink2); }
+body:not(.m) .vt th { font-size: 7.5pt; padding: 0 2.4mm 1.2mm 0; }
+body:not(.m) .vt td { padding: 1.5mm 2.4mm 1.5mm 0; font-size: 9pt; line-height: 1.35; }
+body:not(.m) .vt td.k { font-size: 10.5pt; }
+body:not(.m) .vt td.big { font-size: 13.5pt; }
+body:not(.m) .vt td.txt { font-size: 8.5pt; }
+body:not(.m) .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+body:not(.m) .charts .card { position: relative; padding: 1.5mm; height: auto; border-radius: 3mm; }
+body:not(.m) .finline { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5mm 5mm; font-size: 9pt; font-weight: 600; }
+body:not(.m) .finline b { font-size: 8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink); }
+body:not(.m) .finline span { display: inline-flex; align-items: center; gap: 1.6mm; }
+body:not(.m) .finline .swatch { width: 3.6mm; height: 3.6mm; }
+body:not(.m) .photos { margin-top: auto; }
+body:not(.m) .prow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; }
+body:not(.m) .pslot {
+  height: 42mm; border-radius: 3mm; overflow: hidden; background: var(--panel); border: .3mm dashed #aeaaa0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1mm; color: var(--ink3); text-align: center;
+}
+body:not(.m) .pslot svg { width: 6.5mm; height: 6.5mm; stroke-width: 1.4; }
+body:not(.m) .pslot b { font-size: 9pt; font-weight: 650; color: var(--ink2); }
+body:not(.m) .pslot span { font-size: 6.5pt; }
+body:not(.m) .pslot.filled { border: 0; }
+body:not(.m) .pslot.filled img { width: 100%; height: 100%; object-fit: cover; }
+body:not(.m) .callout { margin-top: 0; border-radius: 3mm; padding: 2.8mm 4.5mm 2.4mm; }
+body:not(.m) .cq { grid-template-columns: 34mm 1fr; column-gap: 4mm; }
+body:not(.m) .callout h4 { font-size: 11pt; }
+body:not(.m) .callout p { font-size: 8pt; line-height: 1.38; }
+body:not(.m) .cbar { margin-top: 1.8mm; padding-top: 1.6mm; column-gap: 7mm; row-gap: 1mm; }
+body:not(.m) .cbar span { font-size: 9pt; gap: 1.5mm; }
+body:not(.m) .cbar span.soft { font-size: 7.5pt; }
+body:not(.m) .cbar svg { width: 3.8mm; height: 3.8mm; }
+
+/* ---------- Yataklar, siparis ---------- */
+body:not(.m) .bcards { margin-top: 6mm; gap: 5mm; }
+body:not(.m) .bcard .im { height: 78mm; border-radius: 4mm; }
+body:not(.m) .bcard h2 { font-size: 15pt; margin: 4mm 0 2mm; }
+body:not(.m) .steps { margin-top: 6mm; }
+body:not(.m) .ship-img { margin-top: 6mm; height: 112mm; border-radius: 4mm; }
+body:not(.m) .contact-strip { padding: 4.5mm 6mm; border-radius: 4mm; }
+body:not(.m) .contact-strip.bottom { bottom: 17mm; }
+body:not(.m) .contact-strip .big { font-size: 19pt; }
+body:not(.m) .contact-strip .lbl { font-size: 8pt; }
+body:not(.m) .ct div { font-size: 10.5pt; }
+
+/* v5 ince ayar */
+body:not(.m) .dgrid { grid-template-columns: minmax(0, 1fr) 72mm; }
+body:not(.m) .dgrid.tall .dcard { height: 138mm; }
+body:not(.m) .dcard.wide { height: 108mm; }
+body:not(.m) .dcard.tri { height: 84mm; }
+body:not(.m) table.dt td.lbl { white-space: nowrap; }
+body:not(.m) .fintro .lead { margin-top: 1.6mm; max-width: 165mm; }
+
+/* v5: motor rehberi daha sik (2 sayfa) */
+body:not(.m) .fr2 { grid-template-columns: minmax(0, 1fr) 116mm; padding: .7mm 2mm; margin-top: .5mm; }
+body:not(.m) .mcs { display: flex; flex-wrap: wrap; gap: 1.1mm; align-content: center; }
+body:not(.m) .mc { display: inline-grid; grid-template-columns: 6.5mm auto auto; column-gap: 1.4mm; min-height: 8mm; padding: .5mm 1.8mm .5mm .5mm; }
+body:not(.m) .mc .th { width: 6.5mm; height: 6.5mm; border-radius: 1.1mm; }
+body:not(.m) .mc .mi { display: flex; align-items: center; gap: 1.2mm; }
+body:not(.m) .mc .mi b { font-size: 10.5pt; }
+body:not(.m) .mc .pt { margin-top: 0; }
+body:not(.m) .mc .pn2 { display: inline; margin-top: 0; }
+body:not(.m) .mc .pg { font-size: 8.5pt; }
+body:not(.m) .bband { margin-top: 1.8mm; padding: .7mm 3mm; }
+body:not(.m) .bband span { font-size: 10pt; }
+body:not(.m) .fr2 { padding: .5mm 2mm; }
+body:not(.m) .mc { min-height: 7.4mm; padding: .4mm 1.8mm .4mm .4mm; grid-template-columns: 6mm auto auto; }
+body:not(.m) .mc .th { width: 6mm; height: 6mm; }
+body:not(.m) .div-num { display: flex; align-items: center; gap: 2.5mm; }
+body:not(.m) .div-num i { display: block; width: 10mm; height: 1.4mm; border-radius: .7mm; }
+
+/* =====================================================================
+   v6 (2026-10-09): urun renkleri (seri icinde acik -> koyu), genis kenar
+   sekmesi 'YANMAR 01', urun sol sayfasinin altinda hafif manzara (assets/art/sea-scene.svg: dag, deniz, tekne).
+   Renkler build.py shade_vars(): --sh zemin, --sht yazi, --shk yuk vurgusu, --shd koyu ton.
+   ===================================================================== */
+body:not(.m) .band { border-bottom-color: var(--sh, var(--acc, var(--aqua))); }
+body:not(.m) .ttab {
+  width: calc(11mm + var(--b)); height: 40mm; background: var(--sh, var(--teal)); color: var(--sht, #fff);
+  box-shadow: 0 0 0 .25mm rgba(0, 0, 0, .06) inset;
+}
+body:not(.m) .ttab.r { border-radius: 2.6mm 0 0 2.6mm; }
+body:not(.m) .ttab.l { border-radius: 0 2.6mm 2.6mm 0; }
+body:not(.m) .ttab span { display: flex; align-items: center; gap: 1.8mm; white-space: nowrap; }
+body:not(.m) .ttab small { font-size: 7pt; font-weight: 700; letter-spacing: .16em; opacity: .92; }
+body:not(.m) .ttab b {
+  font-family: 'Inter Display', 'Inter', sans-serif; font-size: 13pt; font-weight: 800; letter-spacing: .01em;
+}
+body:not(.m) .kfig { background: var(--sh, var(--teal)); color: var(--sht, #fff); }
+body:not(.m) .kfig span { color: inherit; opacity: .78; }
+body:not(.m) .kfig .kload b { color: var(--shk, #a6eef2); }
+body:not(.m) .ltiles b { color: var(--shd, var(--ink)); }
+body:not(.m) .sea {
+  position: absolute; left: calc(-1 * var(--b)); right: calc(-1 * var(--b)); bottom: calc(-1 * var(--b));
+  height: 0; opacity: .35; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 22mm); mask-image: linear-gradient(to bottom, transparent 0, #000 22mm);
+}
+body:not(.m) .sea svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* --- yeni sag sayfa duzeni (prodr2): on / ust gorunus kutulari, grafikler, olcu seridi, 2 fotograf --- */
+body:not(.m) .prodr2 .fit { display: flex; flex-direction: column; gap: 4mm; }
+body:not(.m) .v2views { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+body:not(.m) .vcard {
+  position: relative; background: #fff; border: .3mm solid var(--line); border-radius: 3mm; height: 66mm;
+  padding: 7mm; display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+body:not(.m) .vcard img { max-width: 100%; max-height: 100%; object-fit: contain; }
+body:not(.m) .vcard .lbl { position: absolute; left: 3mm; top: 2.2mm; font-size: 8.5pt; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--aquaink); }
+body:not(.m) .dstrip { display: grid; grid-template-columns: repeat(3, 1fr); border-top: .25mm solid var(--line); }
+body:not(.m) .dstrip div { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm;
+  padding: 1.4mm 2.5mm 1.4mm 0; border-bottom: .25mm solid var(--line); }
+body:not(.m) .dstrip div:not(:nth-child(3n+1)) { padding-left: 2.5mm; border-left: .25mm solid var(--line); }
+body:not(.m) .dstrip span { font-size: 8pt; color: var(--ink2); white-space: nowrap; }
+body:not(.m) .dstrip b { font-size: 9.5pt; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+body:not(.m) .dblk .capline { margin-top: 1mm; }
+body:not(.m) .prow.two { grid-template-columns: 1fr 1fr; }
+body:not(.m) .prow.two .pslot { height: 50mm; }
+
+body:not(.m) .v2views.tri { grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+body:not(.m) .vcard.tri { height: 92mm; flex-direction: column; gap: 3mm; padding: 9mm 3mm 4mm; }
+body:not(.m) .vcard.tri img { max-height: 48%; }
+body:not(.m) .vcard.tri .lbl { font-size: 10pt; letter-spacing: .04em; }
+
+/* olcu tablosu (3 cift sutun, tam cizgili) ve daha yuksek fotograf kutulari */
+body:not(.m) table.dgrid3 { width: 100%; border-collapse: collapse; border: .3mm solid var(--line); }
+body:not(.m) table.dgrid3 td { border: .25mm solid var(--line); padding: 1.5mm 2.4mm; vertical-align: baseline; }
+body:not(.m) table.dgrid3 td.lbl { font-size: 8pt; color: var(--ink2); white-space: nowrap; border-right: none; }
+body:not(.m) table.dgrid3 td.val { font-size: 9.5pt; font-weight: 700; text-align: right; white-space: nowrap;
+  font-variant-numeric: tabular-nums; border-left: none; }
+body:not(.m) .prodr2 .prow.two .pslot { height: 74mm; }
+body:not(.m) .prodr2 .callout { padding: 2.4mm 4.5mm 2.2mm; }
+body:not(.m) .prodr2 .cq { grid-template-columns: auto 1fr; align-items: center; }
+body:not(.m) .prodr2 .callout h4 { white-space: nowrap; }
+body:not(.m) .prodr2 .prow.two .pslot { height: 66mm; }
+body:not(.m) .prodr2:has(.v2views.tri) .prow.two .pslot { height: 50mm; }
+
+/* fotograf kutusu: urun tam gorunsun (kirpma yok), bos kalan yer ayni fotografin bulanik kopyasi */
+body:not(.m) .pslot.filled { position: relative; }
+body:not(.m) .pslot.filled img.pbg { position: absolute; inset: -4mm; width: calc(100% + 8mm); height: calc(100% + 8mm);
+  object-fit: cover; filter: blur(3mm) brightness(.92); }
+body:not(.m) .pslot.filled img.pfg { position: relative; width: 100%; height: 100%; object-fit: contain; }
+body:not(.m) .pslot.filled img.pbg { inset: -12mm; width: calc(100% + 24mm); height: calc(100% + 24mm); filter: blur(6mm) saturate(.9); opacity: .85; }
+body:not(.m) .pslot.filled { background: #e9e6df; }
+body:not(.m) .ship-img img { object-position: 50% 50%; }
+
+/* fotograf satiri olmayan seri sag sayfasi (SD): kutular ve grafikler buyuk */
+body:not(.m) .prodr2.nophoto .vcard.tri { height: 122mm; padding: 9mm 2mm 4mm; }
+body:not(.m) .prodr2.nophoto .vcard.tri img { max-height: 49%; }
+
+body:not(.m) .prodr2.nophoto .callout { margin-top: auto; }
+body:not(.m) .prodr2.nophoto .dgrid3, body:not(.m) .prodr2.nophoto table.dt.multi { font-size: 9pt; }
+
+/* saft yataklari: tam olcu listesi (bronz mm, bronz inc, fiber) */
+body:not(.m) .flow.brg { display: flex; flex-direction: column; gap: 3mm; }
+body:not(.m) .flow.brg .contact-strip { margin-top: 0; }
+body:not(.m) .bkey { display: flex; gap: 1.6mm; align-items: center; font-size: 8.5pt; color: var(--muted, #556); margin-top: 2mm; }
+body:not(.m) .bkey b { display: inline-grid; place-items: center; width: 4.6mm; height: 4.6mm; border-radius: 1mm;
+  background: var(--teal); color: #fff; font-size: 7.5pt; margin-left: 2.4mm; }
+body:not(.m) .bkey b:first-child { margin-left: 0; }
+body:not(.m) .bgrid { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4mm; align-items: start; }
+body:not(.m) .btab h3 { display: flex; justify-content: space-between; align-items: baseline; font-size: 9pt; font-weight: 720;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--teal); border-bottom: .5mm solid var(--teal); padding-bottom: 1mm; }
+body:not(.m) .btab h3 span { font-size: 7.5pt; color: #8a949b; letter-spacing: 0; }
+body:not(.m) table.bt { width: 100%; border-collapse: collapse; font-size: 7.3pt; font-variant-numeric: tabular-nums; }
+body:not(.m) table.bt th { font-size: 7pt; color: #8a949b; font-weight: 700; text-align: left; padding: .7mm 1mm .5mm; }
+body:not(.m) table.bt td { padding: .38mm 1mm; border-bottom: .2mm solid #e3e6e3; white-space: nowrap; font-weight: 560; }
+body:not(.m) table.bt tr:nth-child(even) td { background: rgba(0,0,0,.022); }
+body:not(.m) table.bt small { font-size: 5.8pt; color: #8a949b; margin-left: .5mm; font-weight: 500; }
+body:not(.m) table.bt sup { color: #b4552d; font-size: 6pt; margin-left: .3mm; }
+body:not(.m) .bside { display: flex; flex-direction: column; gap: 3mm; }
+body:not(.m) .bimg { background: var(--panel); border-radius: 3mm; padding: 2.5mm; text-align: center; }
+body:not(.m) .bimg img { width: 100%; height: 36mm; object-fit: contain; display: block; }
+body:not(.m) .bimg span { display: block; font-size: 8pt; font-weight: 650; margin-top: 1mm; }
+body:not(.m) .bnote { font-size: 7pt; color: #6b757c; line-height: 1.35; }body:not(.m) .flow.brg .h1 { font-size: 24pt; }
+body:not(.m) table.bt td { padding: .22mm 1mm; font-size: 7pt; }
+body:not(.m) .bimg img { height: 30mm; }
+body:not(.m) .bcontact { background: var(--teal); color: #fff; border-radius: 3mm; padding: 3.5mm 4mm; font-size: 8pt; display: grid; gap: 1.2mm; }
+body:not(.m) .bcontact .lbl { font-size: 7pt; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; color: var(--aqua); }
+body:not(.m) .bcontact .big { font-size: 14pt; font-weight: 750; letter-spacing: -.01em; white-space: nowrap; }
+body:not(.m) .bcontact div { display: flex; align-items: center; gap: 1.5mm; }
+body:not(.m) .bcontact svg { width: 3.4mm; height: 3.4mm; }body:not(.m) table.bt td { padding: .18mm 1mm; line-height: 1.18; }
+body:not(.m) table.bt sup { line-height: 0; vertical-align: .35em; }
+body:not(.m) .flow.brg { gap: 2.4mm; }
+body:not(.m) .flow.brg .h1 { font-size: 21pt; }body:not(.m) table.bt td { padding: .4mm 1mm; }
+/* olcu sayfasi kutulari: cizim kutuyu doldurur */
+body:not(.m) .vcard { height: 70mm; padding: 7.5mm 3mm 3mm; }
+
+/* olcu sayfasi kutulari sayfa zemininde (cizim gorselleri saydam) */
+body:not(.m) .vcard, body:not(.m) .prodr2 .chartcard { background: #f1f0eb; }
+
+/* hakkimizda acilimi */
+body:not(.m) .about-hero { height: calc(297mm + 2 * var(--b)); }
+body:not(.m) .about-hero img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+body:not(.m) .about-shade { position: absolute; left: calc(-1 * var(--b)); right: calc(-1 * var(--b)); bottom: calc(-1 * var(--b)); height: 150mm;
+  background: linear-gradient(to bottom, rgba(10, 34, 40, 0) 0%, rgba(10, 34, 40, .78) 45%, rgba(10, 34, 40, .94) 100%); }
+body:not(.m) .about-title { position: absolute; left: var(--m); right: 26mm; bottom: 30mm; }
+body:not(.m) .about-title .h1 { font-size: 34pt; line-height: 1.02; }
+body:not(.m) .about-title .lead { font-size: 11pt; color: rgba(255, 255, 255, .86); margin-top: 4mm; max-width: 150mm; }
+body:not(.m) .about .folio { color: rgba(255, 255, 255, .7); }
+body:not(.m) .about-r { gap: 6mm; }
+body:not(.m) .about-mosaic { display: grid; grid-template-columns: 1.15fr 1fr; grid-template-rows: 56mm 56mm; gap: 3.5mm; }
+body:not(.m) .about-mosaic figure { position: relative; margin: 0; border-radius: 3.5mm; overflow: hidden; }
+body:not(.m) .about-mosaic .am0 { grid-row: 1 / span 2; }
+body:not(.m) .about-mosaic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+body:not(.m) .about-mosaic figcaption { position: absolute; left: 3mm; bottom: 2.5mm; font-size: 7.5pt; font-weight: 650;
+  letter-spacing: .1em; text-transform: uppercase; color: #fff; text-shadow: 0 .3mm 1.2mm rgba(0, 0, 0, .55); }
+body:not(.m) .about-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+body:not(.m) .about-cols h3 { font-size: 11pt; font-weight: 720; color: var(--teal); margin-bottom: 1.6mm; }
+body:not(.m) .about-cols p { font-size: 9pt; line-height: 1.45; color: var(--ink2); }
+body:not(.m) .about-figs { display: grid; grid-template-columns: repeat(4, 1fr); border-top: .3mm solid var(--line); border-bottom: .3mm solid var(--line); }
+body:not(.m) .about-figs div { padding: 4mm 3mm; border-left: .3mm solid var(--line); }
+body:not(.m) .about-figs div:first-child { border-left: none; padding-left: 0; }
+body:not(.m) .about-figs b { display: block; font-size: 24pt; font-weight: 750; letter-spacing: -.02em; color: var(--teal); line-height: 1; }
+body:not(.m) .about-figs span { display: block; font-size: 8pt; color: var(--ink2); margin-top: 1.5mm; }
+body:not(.m) .about-addr { display: flex; align-items: center; gap: 2mm; font-size: 9pt; color: var(--ink2); margin-top: auto; }
+body:not(.m) .about-addr svg { width: 4mm; height: 4mm; stroke: var(--teal); }
+body:not(.m) .about-addr em { margin-left: auto; font-style: normal; font-weight: 650; color: var(--teal); }body:not(.m) .about-mosaic { grid-template-rows: 68mm 68mm; }
+body:not(.m) .about-brands h3 { font-size: 8.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--aquaink); }
+body:not(.m) .about-brands p { font-size: 13pt; font-weight: 650; letter-spacing: -.01em; color: var(--ink); margin-top: 1.5mm; line-height: 1.35; }
+/* v3: tek olculu fotograf duzeni (sahibin cizdigi oranlar) */
+body:not(.m) .d3 { position:absolute; left:var(--m); right:var(--m); top:19mm; bottom:14mm; display:grid; gap:3mm;
+  grid-template-columns: 1fr 1fr; grid-template-rows: auto 44mm 44mm auto minmax(0, 1fr) auto; }
+body:not(.m) .d3 .hd { grid-column: 1 / span 2; }
+body:not(.m) .d3 .c3 { background:#f1f0eb; border:.3mm solid var(--line); border-radius:3mm; overflow:hidden;
+  display:flex; align-items:center; justify-content:center; padding:1mm; }
+body:not(.m) .d3 .front { grid-column:1; grid-row: 2 / span 2; padding:3mm; }
+body:not(.m) .d3 .front img { max-width:100%; max-height:100%; object-fit:contain; }
+body:not(.m) .d3.nocharts .front { grid-column: 1 / span 2; }
+body:not(.m) .d3 .ch0 { grid-column:2; grid-row:2; }
+body:not(.m) .d3 .ch1 { grid-column:2; grid-row:3; }
+body:not(.m) .d3 svg.chart { width:100%; height:100%; }
+body:not(.m) .d3 .tbl { grid-column: 1 / span 2; grid-row:4; }
+body:not(.m) .d3 .tbl table { width:100%; }
+body:not(.m) .d3 .tbl td, body:not(.m) .d3 .tbl th { padding:1mm 2mm !important; }
+body:not(.m) .d3 .tbl td.lbl { font-size:7.5pt !important; }
+body:not(.m) .d3 .tbl td.val { font-size:8.5pt !important; }
+body:not(.m) .d3 .tbl .dth { margin-bottom:1mm; }
+body:not(.m) .d3 .tbl .capline { margin-top:1mm; font-size:7.5pt; }
+body:not(.m) .d3 .ph { grid-row:5; min-height:0; }
+body:not(.m) .d3 .ph .pslot { height:100%; }
+body:not(.m) .d3 .ph .pslot .pfg { object-fit:cover; width:100%; height:100%; }
+body:not(.m) .d3 .ph .pslot .pbg { display:none; }
+body:not(.m) .d3 .cl { grid-column: 1 / span 2; grid-row:6; }
+body:not(.m) .d3 .cl .callout { margin:0; }
+body:not(.m) .d3 .cl .cq { grid-template-columns:auto 1fr; align-items:center; }
+body:not(.m) .d3 .cl h4 { white-space:nowrap; }body:not(.m) .d3 .front { flex-direction:column; gap:2mm; }
+body:not(.m) .d3 .front img.fo { flex:1 1 62%; min-height:0; max-width:100%; object-fit:contain; }
+body:not(.m) .d3 .front img.tv { flex:0 1 34%; min-height:0; max-width:92%; object-fit:contain; mix-blend-mode:multiply; }
+body:not(.m) .d3 { grid-template-rows: auto 52mm 52mm auto minmax(0, 1fr) auto; }
+body:not(.m) .d3 .front img.fo { flex-basis:66%; } body:not(.m) .d3 .front img.tv { flex-basis:30%; }
+
+body:not(.m) .d3 .front img.fo { flex-basis:100%; }
+
+/* olculu on fotograf + ustten render: ikisi de tam ortada */
+body:not(.m) .d3 .front { align-items:center; justify-content:center; }
+body:not(.m) .d3 .front:has(img.tv) img.fo { flex:1 1 58%; }
+body:not(.m) .d3 .front img.tv { flex:1 1 38%; min-height:0; max-width:96%; object-fit:contain; mix-blend-mode:normal; align-self:center; }
+
+/* tam sayfa fotograf: eBay yorumlari, petek dizilimli radyuslu kartlar (ornek A) */
+body:not(.m) .rv-tag { position:absolute; left:12mm; top:12mm; background:rgba(13,40,46,.82); color:#fff; border-radius:2.5mm;
+  padding:2.4mm 4mm; font-size:8.5pt; font-weight:700; letter-spacing:.08em; text-transform:uppercase; z-index:2; }
+body:not(.m) .rv-tag span { color:#e0a21b; margin-right:2mm; }
+body:not(.m) .rv-hc { position:absolute; left:0; right:0; bottom:16mm; height:86mm; z-index:2; }
+body:not(.m) .rv-hc .cell { position:absolute; width:56mm; height:41mm; }
+body:not(.m) .rv-hc .c0 { left:9mm; top:0; } body:not(.m) .rv-hc .c1 { left:77mm; top:0; } body:not(.m) .rv-hc .c2 { left:145mm; top:0; }
+body:not(.m) .rv-hc .c3 { left:43mm; top:45mm; } body:not(.m) .rv-hc .c4 { left:111mm; top:45mm; }
+body:not(.m) .rv-hc .c5 { left:-25mm; top:45mm; display:none; }
+body:not(.m) .rvc { width:100%; height:100%; box-sizing:border-box; border-radius:4mm; background:rgba(255,255,255,.86);
+  backdrop-filter:blur(5px); box-shadow:0 .8mm 3mm rgba(0,0,0,.2); padding:3mm 4mm; color:#16252b; text-align:center;
+  display:flex; flex-direction:column; justify-content:center; }
+body:not(.m) .rvc .st { color:#e0a21b; font-size:9pt; letter-spacing:.06em; }
+body:not(.m) .rvc q { display:block; quotes:none; font-style:italic; font-size:8pt; line-height:1.32; margin:1.2mm 0 1.4mm; }
+body:not(.m) .rvc .by { font-size:7pt; color:#5b6a70; display:flex; gap:2mm; justify-content:center; align-items:center; }
+body:not(.m) .rvc .cty { display:inline-flex; gap:1.2mm; align-items:center; font-weight:700; color:#16252b; }
+body:not(.m) .rvc .flag { width:4.6mm; height:3.1mm; box-shadow:0 0 0 .15mm rgba(0,0,0,.25); border-radius:.4mm; }
+body:not(.m) .rvc.score { background:rgba(23,115,125,.93); color:#fff; }
+body:not(.m) .rvc.score b { font-size:26pt; font-weight:800; line-height:1; }
+body:not(.m) .rvc.score small { font-size:8.5pt; font-weight:700; letter-spacing:.04em; margin-top:1mm; }
+body:not(.m) .rvc.score span { font-size:6.5pt; opacity:.8; letter-spacing:.1em; text-transform:uppercase; margin-top:1mm; }
+body:not(.m) .rvc .cty { white-space:nowrap; font-size:6.6pt; }
+body:not(.m) .d3 .ph .pslot.contain .pfg { object-fit:contain; }
+body:not(.m) .d3 .ph .pslot.contain .pbg { display:block; }
+body:not(.m) .d3 .front { padding:2mm; }
+body:not(.m) .d3 .front img.fo { flex:1 1 100%; max-height:100%; }
+body:not(.m) .rv-hc .c3 { left:43mm; } body:not(.m) .rv-hc .c4 { left:111mm; }
+body:not(.m) .rv-hc:has(.c3):not(:has(.c4)) .c3 { left:77mm; }
+/* arka kapak ve siparis bolumu (yeni) */
+body:not(.m) .back-order { margin: 6mm 14mm 0; text-align:center; color:#fff; }
+body:not(.m) .back-order h3 { font-size:12pt; letter-spacing:.12em; text-transform:uppercase; color:var(--aqua); }
+body:not(.m) .back-order p { font-size:10pt; margin-top:2mm; }
+body:not(.m) .back-order .emin { opacity:.8; font-size:9pt; }
+body:not(.m) .order-ch { margin-top:6mm; padding:4mm 5mm; border-radius:3mm; background:var(--panel); }
+body:not(.m) .order-ch b { display:block; font-size:11pt; color:var(--teal); }
+body:not(.m) .order-ch span { display:block; font-size:9.5pt; margin-top:1.5mm; color:var(--ink2); }
+body:not(.m) .order-ch .emin { opacity:.85; font-size:8.5pt; }
+
+/* hakkimizda: tek sayfa, 5 sekme */
+body:not(.m) .about-hero { height: 150mm; }
+body:not(.m) .about-shade { height: 150mm; }
+body:not(.m) .about-title { bottom: auto; top: 100mm; }
+body:not(.m) .about-title .h1 { font-size: 28pt; }
+body:not(.m) .about-tabs { position:absolute; left:14mm; right:14mm; top:160mm; bottom:20mm; display:flex; flex-direction:column; gap:4mm; }
+body:not(.m) .about-tabs .chips { display:grid; grid-template-columns: repeat(5,1fr); gap:2mm; }
+body:not(.m) .about-tabs .tab { background:rgba(255,255,255,.08); border:.3mm solid rgba(255,255,255,.22); border-radius:2.5mm; padding:2.5mm 2.5mm; color:#fff; }
+body:not(.m) .about-tabs .tab em { font-style:normal; font-size:8pt; color:var(--aqua); letter-spacing:.1em; }
+body:not(.m) .about-tabs .tab b { display:block; font-size:9pt; margin-top:1mm; line-height:1.2; }
+body:not(.m) .about-tabs .panels { display:grid; grid-template-columns: repeat(5,1fr); gap:3mm; }
+body:not(.m) .about-tabs .pan { color:rgba(255,255,255,.9); }
+body:not(.m) .about-tabs .pan h3 { font-size:9.5pt; color:var(--aqua); margin-bottom:1.5mm; }
+body:not(.m) .about-tabs .pan p { font-size:8pt; line-height:1.45; }
+/* arka kapak */
+body:not(.m) .back .bk-h { margin:10mm 14mm 4mm; font-size:10pt; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--aqua); }
+body:not(.m) .back .bk-steps { margin:0 14mm; display:grid; grid-template-columns:repeat(3,1fr); gap:4mm; color:#fff; }
+body:not(.m) .back .bk-steps em { font-style:normal; display:inline-grid; place-items:center; width:7mm; height:7mm; border-radius:50%; background:var(--aqua); color:#0d2c32; font-weight:800; font-size:9pt; }
+body:not(.m) .back .bk-steps b { display:block; font-size:9.5pt; margin-top:2mm; }
+body:not(.m) .back .bk-steps span { display:block; font-size:8pt; line-height:1.4; opacity:.85; margin-top:1mm; }
+body:not(.m) .back .bk-qr { margin:0 14mm; display:grid; grid-template-columns:repeat(4,1fr); gap:4mm; }
+body:not(.m) .back .bq { background:#fff; color:#16252b; border-radius:3mm; padding:3mm; text-align:center; }
+body:not(.m) .back .bqr svg { width:100%; height:auto; display:block; }
+body:not(.m) .back .bq b { display:block; font-size:9pt; margin-top:2mm; }
+body:not(.m) .back .bq span { display:block; font-size:7pt; line-height:1.35; color:#4d5d63; margin-top:1mm; }
+body:not(.m) .back .bk-addr { margin:6mm 14mm 0; display:flex; gap:2.5mm; align-items:flex-start; color:#fff; font-size:8.5pt; }
+body:not(.m) .back .bk-addr svg { width:4mm; height:4mm; flex:none; stroke:var(--aqua); }
+body:not(.m) .back .back-logo { position:absolute; top:14mm; left:14mm; width:64mm; height:auto; }
+body:not(.m) .back .back-tag { position:absolute; top:36mm; left:14mm; right:14mm; }
+body:not(.m) .back .bk-h.first { margin-top:58mm; }
+/* 2026-10-29: hakkimizda alt bandi (kargo fotografi + markalar) */
+body:not(.m) .about-tabs { bottom: auto; }
+body:not(.m) .about-tabs .pan p { font-size: 8.3pt; }
+body:not(.m) .about-band { position: absolute; left: 14mm; right: 14mm; bottom: 20mm; height: 44mm; display: grid;
+  grid-template-columns: 72mm 1fr; gap: 6mm; align-items: stretch; border-top: .3mm solid rgba(255,255,255,.22); padding-top: 5mm; }
+body:not(.m) .about-band .ab-img { border-radius: 3mm; overflow: hidden; }
+body:not(.m) .about-band .ab-img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; display: block; }
+body:not(.m) .about-band h3 { font-size: 9.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--aqua); }
+body:not(.m) .about-band p { font-size: 9pt; line-height: 1.45; color: rgba(255,255,255,.9); margin-top: 2mm; }
+body:not(.m) .about-band .ab-brands { display: flex; flex-wrap: wrap; gap: 1.6mm; margin-top: 3mm; }
+body:not(.m) .about-band .ab-brands span { font-size: 8.5pt; font-weight: 650; color: #fff; padding: 1.1mm 2.6mm; border-radius: 5mm;
+  border: .3mm solid rgba(255,255,255,.3); background: rgba(255,255,255,.07); }
+/* saildrive bolum kapagi: uc model gorseli + montaj notu */
+body:not(.m) .div-models { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; margin-top: 7mm; }
+body:not(.m) .div-models figure { margin: 0; background: #ecebe6; border-radius: 3mm; overflow: hidden; height: 50mm; position: relative; }
+body:not(.m) .div-models img { width: 100%; height: 100%; object-fit: contain; padding: 3mm 3mm 8mm; display: block; }
+body:not(.m) .div-models figcaption { position: absolute; left: 0; right: 0; bottom: 2.5mm; text-align: center; font-size: 10pt;
+  font-weight: 750; color: #16252b; }
+body:not(.m) .div-note { font-size: 9pt; line-height: 1.5; color: rgba(255,255,255,.75); margin-top: 5mm; max-width: 165mm; }
+/* arka sayfa: eski / yeni takoz ve siparis kanallari */
+body:not(.m) .back .bk-on { margin: 2.5mm 0 0; }
+body:not(.m) .back .bk-on img { width: 100%; height: 26mm; object-fit: cover; object-position: 50% 55%; border-radius: 2mm; display: block; }
+body:not(.m) .back .bk-on figcaption { font-size: 6.8pt; line-height: 1.35; opacity: .75; margin-top: 1.2mm; }
+body:not(.m) .back .bk-lead { margin: -1.5mm 14mm 4mm; font-size: 9pt; line-height: 1.45; color: rgba(255,255,255,.88); }
+body:not(.m) .about-hero, body:not(.m) .about-shade { height: 140mm; }
+body:not(.m) .about-title { top: 90mm; }
+body:not(.m) .about-tabs { top: 149mm; }
+body:not(.m) .about-band { bottom: 17mm; height: 40mm; padding-top: 4mm; }
+body:not(.m) .back .bk-steps span span, body:not(.m) .back .bk-steps figcaption span, body:not(.m) .back .bq span span,
+body:not(.m) .back .bk-lead span { display: inline; margin: 0; opacity: 1; font-size: inherit; color: inherit; line-height: inherit; }
+body:not(.m) .back .bk-on img { height: 30mm; object-position: 50% 78%; }
+
+/* 2026-10-29b: hakkimizda sitedeki gibi 5 bolum, foto / yazi sirayla */
+body:not(.m) .about2 { position: absolute; left: var(--m); right: var(--m); top: 17mm; bottom: 15mm; display: flex; flex-direction: column; gap: 3.2mm; }
+body:not(.m) .about2 .ab-head .h1 { font-size: 22pt; line-height: 1.05; margin-top: 1mm; }
+body:not(.m) .about2 .ab-head .lead { font-size: 9.5pt; margin-top: 1.5mm; color: var(--ink2); }
+body:not(.m) .about2 .ab-row { flex: 1; min-height: 0; display: grid; grid-template-columns: 78mm 1fr; gap: 6mm; align-items: center; }
+body:not(.m) .about2 .ab-row.rev { grid-template-columns: 1fr 78mm; }
+body:not(.m) .about2 .ab-row.rev .ab-ph { order: 2; }
+body:not(.m) .about2 .ab-ph { height: 100%; border-radius: 3mm; overflow: hidden; background: var(--panel); }
+body:not(.m) .about2 .ab-ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+body:not(.m) .about2 .ab-k { display: flex; align-items: center; gap: 2mm; font-size: 7.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--aquaink); }
+body:not(.m) .about2 .ab-k i { font-style: normal; color: #fff; background: var(--teal); border-radius: 1.2mm; padding: .5mm 1.4mm; letter-spacing: .05em; }
+body:not(.m) .about2 h3 { font-size: 14pt; font-weight: 740; letter-spacing: -.015em; color: var(--ink); margin-top: 1.6mm; line-height: 1.12; }
+body:not(.m) .about2 p { font-size: 8.8pt; line-height: 1.45; color: var(--ink2); margin-top: 1.6mm; }
+body:not(.m) .about2 .ab-tags { display: flex; flex-wrap: wrap; gap: 1.3mm; margin-top: 2.2mm; }
+body:not(.m) .about2 .ab-tags span { font-size: 7.4pt; font-weight: 650; color: var(--teal); padding: .8mm 2.2mm; border-radius: 4mm; background: var(--panel); border: .25mm solid var(--line); }
+/* arka sayfa: her adimin ustunde genis fotograf */
+body:not(.m) .back .bk-on { margin: 0 0 3mm; }
+body:not(.m) .back .bk-on img { height: 44mm; width: 100%; object-fit: cover; object-position: 50% 50%; border-radius: 2.5mm; }
+body:not(.m) .back .bk-on.s2 img { object-position: 50% 62%; }
+body:not(.m) .back .bk-steps em { margin-top: 0; }
+body:not(.m) .back .bk-h.first { margin-top: 52mm; }
+body:not(.m) .back .bk-on { position: relative; }
+body:not(.m) .back .bk-on figcaption { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; padding: 5mm 2.5mm 1.8mm; font-size: 7pt;
+  opacity: 1; color: #fff; border-radius: 0 0 2.5mm 2.5mm; background: linear-gradient(transparent, rgba(0,0,0,.72)); }
+
+/* 2026-10-30: 3. sayfa ne yapiyoruz */
+body:not(.m) .about-r { gap: 5mm; }
+body:not(.m) .about-r .h1 { font-size: 24pt; line-height: 1.06; margin-top: 1mm; }
+body:not(.m) .about-r .about-mosaic { grid-template-rows: 58mm 58mm; }
+body:not(.m) .ar-text p { font-size: 10.2pt; line-height: 1.55; color: var(--ink2); margin-top: 2.6mm; }
+body:not(.m) .ar-text p:first-child { margin-top: 0; font-size: 11.5pt; color: var(--ink); font-weight: 500; }
+body:not(.m) .ar-brands h3 { font-size: 8.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--aquaink); }
+body:not(.m) .ar-brands div { display: flex; flex-wrap: wrap; gap: 1.6mm; margin-top: 2.2mm; }
+body:not(.m) .ar-brands span { font-size: 9pt; font-weight: 650; color: var(--teal); padding: 1.1mm 3mm; border-radius: 5mm; background: var(--panel); border: .25mm solid var(--line); }
+body:not(.m) .about-r .about-mosaic { grid-template-rows: 79mm 79mm; }
+body:not(.m) .about-r .about-mosaic { grid-template-rows: 64mm 64mm; }
+
+/* 2026-10-30: takoz yerlesimi sayfasi */
+body:not(.m) .lay { gap: 5mm; }
+body:not(.m) .lay .h1 { font-size: 24pt; margin-top: 1mm; }
+body:not(.m) .lay .lead { font-size: 9.5pt; margin-top: 2mm; max-width: 170mm; }
+body:not(.m) .lygrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm 5mm; }
+body:not(.m) .lycard { background: #fff; border: .3mm solid var(--line); border-radius: 3mm; padding: 3mm 3.5mm 3mm; }
+body:not(.m) .lycard .lyeng { display: block; font-size: 9.5pt; font-weight: 750; color: var(--ink); line-height: 1.25; min-height: 8mm; }
+body:not(.m) .lycard svg.boat { display: block; width: 100%; height: auto; margin-top: 1mm; }
+body:not(.m) .lycard .lysum { font-size: 8.5pt; font-weight: 650; color: var(--teal); margin-top: 1mm; }
+body:not(.m) .lycard .mps { display: flex; flex-wrap: wrap; gap: 1.5mm; margin-top: 1.6mm; }
+body:not(.m) .lynote { font-size: 8pt; line-height: 1.45; color: var(--ink2); }
+
+/* 2026-10-30b: takoz yerlesimi iki sayfa, 3 x 3 kart */
+body:not(.m) .lay { gap: 4mm; }
+body:not(.m) .lygrid { grid-template-columns: repeat(3, 1fr); gap: 3.2mm 3.2mm; }
+body:not(.m) .lycard { padding: 2.4mm 2.6mm 2.6mm; }
+body:not(.m) .lycard .lyeng { font-size: 8pt; min-height: 7mm; }
+body:not(.m) .lycard .lysum { font-size: 7.2pt; line-height: 1.3; }
+body:not(.m) .lycard .mps { gap: 1mm; margin-top: 1.4mm; }
+body:not(.m) .lycard .mp { font-size: 7.5pt; }
+body:not(.m) .lay .lygrid { flex: 1; grid-auto-rows: 1fr; }
+body:not(.m) .lycard { display: flex; flex-direction: column; justify-content: space-between; }
+
+/* 2026-10-30c: arka sayfa logo ortada, sloganin ustunde */
+body:not(.m) .back .back-logo { left: 50%; right: auto; top: 18mm; width: 74mm; transform: translateX(-50%); }
+body:not(.m) .back .back-tag { top: 40mm; left: 14mm; right: 14mm; text-align: center; }
