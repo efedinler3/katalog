@@ -1,0 +1,75 @@
+Novibrasyon - motor takozu teknik çizim ve grafik envanteri
+===========================================================
+Tarama: 2026-10-20, canlı site www.novibrasyon.com (Shopify)
+Taranan: 63 motor takozu ürünü (tekli + setler), 223 görsel. Görseller tek tek sınıflandı:
+ölçü çizimi / grafik / ürün fotoğrafı. Aynı çizim birçok üründe tekrar kullanılıyor; tekil çizim ve grafik sayısı 28.
+Bu klasördeki dosyalar sitedekilerin aynısıdır (katalog için daha önce alınmış kopyalar, E: arşivi ve
+senin gönderdiğin VV çizimleri). Yeni indirme yapılmadı.
+
+Genel bakış: genel-bakis.jpg
+
+
+MODEL MODEL DURUM
+-----------------
+Model   Ölçü çizimi   Doğal frekans   Yük-çökme   Ürün sayfası (sitede)
+50      VAR           YOK             YOK         /products/yanmar-1gm-motor-mount-50kg-front-oem-replacement-128170-08340
+70      VAR           YOK             YOK         /products/yanmar-1gm-motor-mount-70kg-rear-gearbox-oem-replacement-128170-08350
+75      VAR           VAR             VAR         /products/yanmar-engine-mount-2gm-3gm-3ym-128270-08350
+100     VAR           VAR             VAR         /products/yanmar-engine-mount-2gm-3gm-3hm-3jh-124772-08341
+150     VAR           VAR             VAR         /products/yanmar-engine-mount-3jh3-3jh5-121370-08351
+200     VAR           VAR             VAR         /products/yanmar-engine-mount-4jh2-4jh3-129470-08350
+        (200'de ayrıca teknik veri föyü var: çizim + iki eğri + parça listesi + sıkma torku, tek sayfa)
+SD150   YOK           YOK             YOK         /products/yanmar-sd20-sd25-saildrive-marine-motor-mount-129795-08340
+SD230   YOK           YOK             YOK         /products/yanmar-saildrive-motor-mount-196420-02310-sd20-sd25-sd30-230
+SD430   YOK           YOK             YOK         /products/yanmar-4jh3e-4jh4e-saildrive-motor-mount-196440-02380-sd40-sd50
+400     VAR           YOK             YOK         /products/yanmar-4lha-mount-519175-08300-119175-08440
+450     VAR           YOK             YOK         /products/cummins-6b-6bt-6bta-5-9-marine-engine-mount-3349230-m20-stud
+500     VAR           YOK             YOK         /products/yanmar-engine-mount-119773-08310-119773-08300-vibration-isolator-6ly-6lpa
+600     VAR           YOK             YOK         /products/cummins-marine-engine-mount-qsm-qsb-qsc-qsl-6cta-oem-3964883-4931364
+VV1     VAR           ortak VV grafiği (iki eğri tek görselde)   /products/vv1-marine-engine-mount-55kg-16mm-volvo-cummins
+VV2     VAR           ortak VV grafiği                           /products/marine-engine-mount-200kg-volvo-cummins-yanmar-vv2
+VV3     VAR           ortak VV grafiği                           /products/vv3-marine-engine-mount-500kg-20mm-volvo-cummins-cat
+MT1     VAR           YOK             YOK         /products/mt1-engine-mount-volvo-yanmar-cummins-mercruiser-man
+MT2     VAR           YOK             YOK         /products/mt2-engine-mount-volvo-yanmar-cummins-nissan-perkins
+MT3     VAR           YOK             YOK         /products/mt3-engine-mount-volvo-yanmar-cummins-man-ford
+
+Sitede VV1 = "55 KG" ve "100 KG" ilanları, VV2 = "200 KG" ve "300 KG", VV3 = "500 KG" ve "800 KG".
+Setlerdeki çizimler tekli ürünlerinkiyle aynı; 75+100, 100+150 ve 150+200 setlerindeki grafikler tekli eğrilerin
+yan yana konmuş hâli.
+
+
+EKSİKLER LİSTESİ
+----------------
+Ölçü çizimi hiç yok (3 model):
+  - SD150  Yanmar saildrive 129795-08340
+  - SD230  Yanmar saildrive 196420-02310
+  - SD430  Yanmar saildrive 196440-02380
+  (E: arşivinde bu üçü için yalnız yerleşim şemaları var, ölçü çizimi yok.)
+
+Grafik (doğal frekans + yük-çökme) yok (12 model):
+  - 50, 70, 400, 450, 500, 600, MT1, MT2, MT3, SD150, SD230, SD430
+
+VV1 / VV2 / VV3 için ayrı grafik yok; üçü tek bir ortak grafikte (sorun değil, bilgi olarak).
+
+
+SİTEDE GÖRDÜĞÜM HATA VE TUTARSIZLIKLAR
+--------------------------------------
+1. "Novibrasyon MT3 Engine Mount Set" sayfasında MT3 değil MT2'nin çizimi duruyor
+   (M16/M18, 166 / 133 / 98 mm). Doğrusu: M24, 184 / 140 / 105 mm.
+   Sayfa: /products/novibrasyon-mt3-engine-mount-volvo-yanmar-cummins
+2. 75, 100 ve 150 çizimleri, takozun üstündeki numara dışında birebir aynı:
+   taban 200, delik aralığı 173, yükseklik 70 / 75, M16 x 1,5, Ø12,2 + 17,2 kanal.
+   Bu üç modelin ölçüleri gerçekten aynı mı? (Katalog da bu değerleri kullanıyor.)
+3. 200: ürün sayfalarındaki fotoğraflı çizimde taban 200 ve delik aralığı 173 yazıyor (75/100/150 ile aynı).
+   200'ün teknik veri föyünde ise taban 205, delik aralığı 174, genişlik 60 yazıyor. Katalog föydeki değerleri kullanıyor.
+4. VV1: senin gönderdiğin çizgi çizimde "MIN. HEIGHT = 66,5", saplama ucu 10 mm. Arşivdeki logolu
+   çizimde (ve katalogda) 68,5 ve 16 mm yazıyor. Hangisi doğru?
+5. 50 ve 70 çizimleri aynı ölçüleri taşıyor (159 taban, 127,5 delik aralığı, M14 x 1,5); gövde aynı olduğu için
+   normal. Daha önceki araştırmada Yanmar değeri 160 / 128 çıkmıştı (yuvarlama farkı).
+
+
+SONRAKİ ADIM
+------------
+Bütün modeller için tek tip "blueprint" formatında, ölçüleri birebir tutan çizimleri kendi kodumla
+sıfırdan çizeceğim. Bunun için yukarıdaki 2, 3 ve 4 numaralı soruların cevabı gerekiyor. Eksik modeller
+(SD150 / SD230 / SD430 çizimi ve 12 modelin grafikleri) için ölçü ve yük verisi gerekecek.

@@ -1,0 +1,142 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#fff;overflow:hidden}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/jsm/"}}</script>
+</head><body>
+<script type="module">
+/* Novibrasyon urun render'i: CAD (STL) + gercek PBR dokular (ambientCG, CC0) + stüdyo HDRI (Poly Haven, CC0)
+   ?code=50&finish=black|stainless|alu|cast&stud=zinc|brass&view=top|front */
+import * as THREE from 'three';
+import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+import { HDRLoader } from 'three/addons/loaders/HDRLoader.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { toCreasedNormals } from 'three/addons/utils/BufferGeometryUtils.js';
+
+const q = new URLSearchParams(location.search);
+const code = q.get('code') || '50';
+const finish = q.get('finish') || 'black';
+const view = q.get('view') || 'top';
+const W = +(q.get('w') || 1600), H = +(q.get('h') || 1000);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.setClearColor(0xffffff, 1);
+renderer.toneMapping = THREE.NeutralToneMapping;
+renderer.toneMappingExposure = +(q.get('exp') || 1.0);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.VSMShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xffffff);
+const hdr = await new HDRLoader().loadAsync('./tex/studio.hdr');
+hdr.mapping = THREE.EquirectangularReflectionMapping;
+scene.environment = hdr;
+scene.environmentIntensity = 0.9;
+scene.environmentRotation = new THREE.Euler(-Math.PI / 2, 0, 0.6);
+
+const key = new THREE.DirectionalLight(0xffffff, 1.2);
+key.position.set(-180, 160, 900);
+key.castShadow = true; key.shadow.mapSize.set(4096, 4096); key.shadow.radius = 22; key.shadow.intensity = 0.65; key.shadow.blurSamples = 24;
+key.shadow.bias = -0.0003; key.shadow.normalBias = 0.25;
+scene.add(key);
+
+const TL = new THREE.TextureLoader();
+function T(path, srgb, rep) {
+  const t = TL.load(path); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep, rep);
+  t.anisotropy = 8; if (srgb) t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const pbr = (n, rep) => ({
+  map: T(`./tex/${n}/${n}_1K-JPG_Color.jpg`, true, rep),
+  normalMap: T(`./tex/${n}/${n}_1K-JPG_NormalGL.jpg`, false, rep),
+  roughnessMap: T(`./tex/${n}/${n}_1K-JPG_Roughness.jpg`, false, rep),
+});
+const RUB = pbr('Rubber004', 1.6), GALV = pbr('Metal032', 1.2), BRUSH = pbr('Metal009', 1.0);
+
+const M = {
+  black: new THREE.MeshPhysicalMaterial({ ...RUB, color: 0x2a2b2d, roughness: 0.8, metalness: 0.0,
+    normalScale: new THREE.Vector2(0.35, 0.35), clearcoat: 0.55, clearcoatRoughness: 0.42 }),
+  cast: new THREE.MeshPhysicalMaterial({ ...RUB, color: 0x2c2d2f, roughness: 0.9, metalness: 0.05,
+    normalScale: new THREE.Vector2(1.2, 1.2), clearcoat: 0.15, clearcoatRoughness: 0.7 }),
+  rubber: new THREE.MeshPhysicalMaterial({ ...RUB, color: 0x2a2a2b, roughness: 1.0, metalness: 0.0,
+    normalScale: new THREE.Vector2(0.9, 0.9), sheen: 0.5, sheenRoughness: 0.8, sheenColor: 0x3a3a3a }),
+  zinc: new THREE.MeshPhysicalMaterial({ ...GALV, color: 0xf2f4f6, metalness: 0.55, roughness: 0.42, clearcoat: 0.3,
+    normalScale: new THREE.Vector2(0.4, 0.4) }),
+  stainless: new THREE.MeshPhysicalMaterial({ ...BRUSH, color: 0xe4e6e8, metalness: 1.0, roughness: 0.55,
+    normalScale: new THREE.Vector2(0.3, 0.3) }),
+  alu: new THREE.MeshPhysicalMaterial({ ...GALV, color: 0xc9ccce, metalness: 0.85, roughness: 1.15,
+    normalScale: new THREE.Vector2(1.0, 1.0) }),
+  brass: new THREE.MeshPhysicalMaterial({ ...BRUSH, color: 0xc89a62, metalness: 1.0, roughness: 0.6 }),
+};
+function matFor(name) {
+  if (/rubber|marks|core|pad|block|body_r|dome/i.test(name)) return M.rubber;
+  if (/fasten|nut|stud|washer|bolt|thread/i.test(name)) return q.get('stud') === 'brass' ? M.brass : M.zinc;
+  return M[finish] || M.black;
+}
+
+// kutu izdusumu UV (STL'de UV yok) + kenarlarda hafif yumusatilmis normal (ince radyus etkisi)
+function prep(g, s) {                     // 30 derece kirilma acisiyla normaller + kutu izdusumu UV
+  g.deleteAttribute('normal');
+  const m = toCreasedNormals(g, Math.PI / 6);
+  const p = m.attributes.position, uv = new Float32Array(p.count * 2);
+  const fn = new THREE.Vector3(), a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3();
+  for (let i = 0; i < p.count; i += 3) {
+    a.fromBufferAttribute(p, i); b.fromBufferAttribute(p, i + 1); c.fromBufferAttribute(p, i + 2);
+    fn.subVectors(c, b).cross(a.clone().sub(b)).normalize();
+    const ax = Math.abs(fn.x), ay = Math.abs(fn.y), az = Math.abs(fn.z);
+    for (let j = 0; j < 3; j++) {
+      const k = i + j, x = p.getX(k), y = p.getY(k), z = p.getZ(k);
+      let u, v; if (az >= ax && az >= ay) { u = x; v = y; } else if (ax >= ay) { u = y; v = z; } else { u = x; v = z; }
+      uv[k * 2] = u / s; uv[k * 2 + 1] = v / s;
+    }
+  }
+  m.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+  return m;
+}
+const names = await (await fetch(`./${code}/parts.json`)).json();
+const group = new THREE.Group();
+const loader = new STLLoader();
+for (const nm of names) {
+  const g = await loader.loadAsync(`./${code}/${nm}.stl`);
+  const mesh = new THREE.Mesh(prep(g, /fasten/.test(nm) ? 18 : 60), matFor(nm));
+  mesh.castShadow = mesh.receiveShadow = true;
+  group.add(mesh);
+}
+scene.add(group);
+const box = new THREE.Box3().setFromObject(group);
+const size = box.getSize(new THREE.Vector3()), ctr = box.getCenter(new THREE.Vector3());
+group.position.sub(ctr);
+
+const ext = Math.max(size.x, size.y, size.z) * 0.9;
+Object.assign(key.shadow.camera, { left: -ext, right: ext, top: ext, bottom: -ext, near: 1, far: 3000 });
+key.shadow.camera.updateProjectionMatrix();
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(5000, 5000), new THREE.ShadowMaterial({ opacity: 0.2 }));
+ground.position.z = -size.z / 2 - 0.05; ground.receiveShadow = true; scene.add(ground);
+
+let cam;
+const fov = 16;
+cam = new THREE.PerspectiveCamera(fov, W / H, 10, 30000);
+if (view === 'top') {
+  const r = Math.max(size.x / (W / H), size.y) * 1.15 / (2 * Math.tan(fov * Math.PI / 360)) + size.z;
+  cam.position.set(0, 0, r); cam.up.set(0, 1, 0); cam.lookAt(0, 0, 0);
+} else {
+  const r = Math.max(size.x / (W / H), size.z) * 1.15 / (2 * Math.tan(fov * Math.PI / 360)) + size.y;
+  cam.position.set(0, -r, 0); cam.up.set(0, 0, 1); cam.lookAt(0, 0, 0);
+}
+
+await new Promise(r => setTimeout(r, 1500));
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, cam));
+const ao = new GTAOPass(scene, cam, W, H);
+ao.updateGtaoMaterial({ radius: Math.max(size.x, size.y) * 0.04, distanceExponent: 1.5, thickness: 2, scale: 1.2, samples: 16 });
+ao.blendIntensity = 0.9;
+composer.addPass(ao);
+composer.addPass(new OutputPass());
+composer.render();
+document.title = 'READY';
+</script></body></html>

@@ -1,0 +1,75 @@
+Ellebogen karşılıkları - bizim takozlarla karşılaştırma
+=====================================================
+Kaynak: ellebogen.com (İspanyol üretici), her ürünün teknik föyü (ölçü çizimi + yük-çökme ve doğal frekans
+eğrileri). 2026-10-20 tarihinde tarayıcıda okundu; hiçbir dosya indirilmedi, katalogda ve sitede hiçbir şey
+değiştirilmedi. Model adları bizimkilerle aynı: 50, 70, 75, 100, 150, 200, SD 150, SD 230, SD 430.
+VV serisinin karşılığı GT serisi.
+
+Kısaltmalar: taban = taban boyu, delik = delik aralığı, gen. = taban genişliği, min = minimum yükseklik.
+
+
+1) BİREBİR KARŞILIKLAR
+----------------------
+Bizim   Ellebogen (parça no)          Ellebogen ölçüleri                                          Maks. yük
+50      Ellebogen 50  (128170-08340)  M14x1,5 | taban 159 | delik 127,5 | gen. 49 | Ø12,5 + 18 kanal |  40 kg
+                                      gövde 66 | min 96,5 | toplam 147 | sac 5 | 0,925 kg
+70      Ellebogen 70  (128170-08350)  50 ile aynı gövde ve ölçüler                                  40 kg
+75      Ellebogen 75  (128270-08341)  M16x1,5 | taban 205 | delik 174 | gen. 60 | Ø12,2 + 17,5 kanal | 40 kg
+                                      kenar 12,5 | gövde 76 | min 103 | toplam 145 | sac 6 | 1,695 kg
+100     Ellebogen 100 (128377-08351)  75 ile aynı gövde ve ölçüler                                  75 kg
+150     Ellebogen 150 (121370-08351)  75 ile aynı gövde ve ölçüler                                 100 kg
+200     Ellebogen 200 (129470-08350)  75 ile aynı gövde ve ölçüler                                 150 kg
+SD150   Ellebogen SD 150 (129795-08340)  M12 alt + üst saplama | üst saplama 34 | gövde 64 (34 + 30) | 100 kg
+                                      alt saplama 35,5 | gen. 130 | iç 52 | derinlik 61 | 0,854 kg
+SD230   Ellebogen SD 230 (196420-02310)  SD 150 ile aynı gövde ve ölçüler                          150 kg
+SD430   Ellebogen SD 430 (196440-02380)  SD 150 ile aynı gövde ve ölçüler                          175 kg
+VV1     Ellebogen GT-S45 / S55 / S65  M16x1,5 | uç 10 anahtar ağzı x 10 | toplam 125 | min 66,5 |  45 / 70 / 95 kg
+        (120450-06400 / -06801 / -07200)  gövde 43 | sac 3 | taban 120 | delik 100 | gen. 60,5 | 11 kanal
+                                      (GT-S40: 36 kg da var)
+VV2     Ellebogen GT-M45 / M55 / M65  M16x1,5 | uç 10 x 10 | toplam 128 | min 78,5 | gövde 55 |      120 / 220 / 280 kg
+        (120650-08100 / -08401 / -08700)  sac 4 | taban 184 | delik 140 | gen. 82 | 17 kanal + 13 delik
+                                      (GT-M35: 95 kg; M20 saplamalı GT-M45/M55 M20 sürümü de var)
+
+Her birinin föyünde yük-çökme ve doğal frekans eğrisi var (50, 70 ve SD'ler dahil).
+
+
+2) BİZİMKİLERLE FARKLAR
+-----------------------
+a) 75 / 100 / 150: Ellebogen'de dördü (75, 100, 150, 200) aynı gövde: taban 205, delik 174, gen. 60,
+   gövde 76, kanal 17,5. Bizim sitedeki çizimlerde ve katalogda 75 / 100 / 150 için 200 / 173 / gövde 75 /
+   kanal 17,2-17,3 yazıyor. 200'ün föyünde ise Ellebogen ile aynı 205 / 174 / 76 / 17,5 var.
+   -> 75/100/150'nin gövdesi aynı (doğru), ama değerler büyük ihtimalle 205 / 174 / 76 olmalı.
+b) 200: Ellebogen ölçüleri föyümüzle birebir aynı. Sitedeki fotoğraflı 200 çizimi (200 / 173) uymuyor.
+   Not: arşivdeki ve sitedeki "Saildrive Takoz 200 - Teknik Veri Föyü", Ellebogen 200 föyünün aynı
+   düzeni (aynı parça etiketleri, aynı sıkma torku değerleri), logosu Novibrasyon.
+c) VV1: Ellebogen GT-S'de min 66,5 ve uç 10 mm. Bu, senin gönderdiğin çizgi çizimle aynı. Arşivdeki
+   logolu çizimdeki (ve katalogdaki) 68,5 / 16 Ellebogen ile uyuşmuyor.
+d) VV2 55 Shore yükü: biz 200 kg yazıyoruz, Ellebogen GT-M55 220 kg. 45 ve 65 Shore aynı (120 / 280).
+e) 50 ve 70: Ellebogen ikisine de maks. 40 kg yazıyor. Katalogda 50 kg ve 70 kg, sitede
+   "50kg" / "70kg" yazıyor (50 ve 70 aslında Yanmar model numarası, kg değil).
+   Ellebogen 50'yi 1GM10 ARKA, 70'i ÖN takoz olarak veriyor. Bu, daha önceki Yanmar araştırmasıyla aynı;
+   bizim sitede tersi yazıyor.
+f) SD150 / SD230 / SD430: bizde ölçü çizimi yok; Ellebogen föylerinde tam ölçüler ve eğriler var.
+g) Ellebogen 75'in sitedeki özelliklerinde "70 kg" da geçiyor ama ürün açıklaması ve föyü 40 kg diyor.
+
+
+3) YAKIN AMA BİREBİR OLMAYAN
+----------------------------
+VV3     En yakını Ellebogen GT-L45 / L55 / L65 (220650-08100 / -08401 / 8402): taban 228, delik 182, gen. 112
+        (bizimle aynı taban), ama M20x2 saplama, gövde 73, min 102, seviye ayar tabanlı yeni tasarım;
+        350 / 525 / 800 kg. Bizim VV3: M20x1,5, gövde 70, min 100, 18x34 kanal, 500 / 800 kg.
+        (Önceki araştırmada VV3 geometrisi Trelleborg Cushyfloat 17-1657 ile eşleşmişti.)
+
+
+4) ELLEBOGEN'DE KARŞILIĞI YOK
+-----------------------------
+400, 450, 500, 600, MT1, MT2, MT3. Ellebogen'in kalan ürünleri bizde yok: H-S / H-M, VP 50 / 60 / 70 (Volvo).
+
+
+5) ÇİZİMLER İÇİN NE ANLAMA GELİYOR
+----------------------------------
+- Blueprint çizimlerinde ölçüler için Ellebogen föyleri sağlam bir referans: 50, 70, 75, 100, 150, 200,
+  SD150, SD230, SD430, VV1, VV2 bu föylerden birebir çizilebilir.
+- Bizde eksik olan 50, 70, SD150, SD230, SD430 eğrileri Ellebogen föylerinde var. Ürünlerimiz aynı kauçuk
+  sertliğindeyse bu eğriler kullanılabilir; bunu senin onaylaman gerekir.
+- Hiçbir şey değiştirilmedi; katalog ve site olduğu gibi duruyor.

@@ -1,7 +1,10 @@
-# Yedek, aday ve gecici klasorler / dosyalar
-_*/
-_*
+# Yedek, aday ve gecici klasorler / dosyalar (sadece ust dizindekiler)
+/_*/
+/_*
+!/_teknik-cizimler/
+!/_teknik-cizimler/**
 __pycache__/
 *.pyc
 assets/src/
 assets/img/_orig/
+_teknik-cizimler/blueprint/kaynak/_render3d/dl/
